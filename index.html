@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Falcon of Codes transforms your vision into powerful digital experiences. We specialize in website development, mobile app creation, and custom digital solutions.">
+    <meta name="keywords" content="web development, mobile app development, custom digital solutions, website design, app development">
+    <meta name="author" content="Falcon of Codes">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Falcon of Codes - Transform Your Vision into Digital Experiences">
+    <meta property="og:description" content="We specialize in website development, mobile app creation, and custom digital solutions that elevate your business.">
+    <meta property="og:image" content="Logo-Test-1-.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Falcon of Codes - Transform Your Vision into Digital Experiences">
+    <meta name="twitter:description" content="We specialize in website development, mobile app creation, and custom digital solutions that elevate your business.">
+    <meta name="twitter:image" content="Logo-Test-1-.png">
+    
+    <link rel="canonical" href="https://falconofcodes.com/">
+    <title>Falcon of Codes - Transform Your Vision into Digital Experiences</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Falcon of Codes",
+        "description": "We transform your vision into powerful digital experiences. We specialize in website development, mobile app creation, and custom digital solutions.",
+        "url": "https://falconofcodes.com",
+        "logo": "https://falconofcodes.com/Logo-Test-1-.png",
+        "sameAs": [],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Falcon of Codes",
+        "url": "https://falconofcodes.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://falconofcodes.com/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Website Development",
+        "provider": {
+            "@type": "Organization",
+            "name": "Falcon of Codes"
+        },
+        "description": "Professional website development services"
+    }
+    </script>
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#home" class="nav__logo" aria-label="Falcon of Codes Home">
+                <img src="Logo.png" alt="Falcon of Codes Logo" width="200" height="80" loading="eager">
+            </a>
+            <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav__menu" id="nav-menu">
+                <li class="nav__item">
+                    <a href="#home" class="nav__link">Home</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#about" class="nav__link">About</a>
+                </li>                            
+                <li class="nav__item">
+                    <a href="#services" class="nav__link">Services</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#features" class="nav__link">Features</a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">Contact</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero section" id="home">
+        <div class="hero__container container">
+            <div class="hero__grid">
+                <div class="hero__content">
+                    <div class="hero__content-inner">
+                        <h1 class="hero__title">Falcon of Codes</h1>
+                    </div>
+                    <p class="hero__description">
+                        At Falcon of Codes, we transform your vision into powerful digital experiences.
+                        We specialize in website development, mobile app creation, and custom digital solutions 
+                        that elevate your business and help you soar above the competition.
+                    </p>
+                    <a href="#contact" class="btn btn--primary">Get Started</a>
+                </div>
+                <div class="hero__image">
+                    <img src="STUDIO PC 2087-01.jpg" alt="Digital Solutions Illustration" width="600" height="600" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about__content">
+                <h2 class="section__title">About Falcon of Codes</h2>
+                <p class="about__description">
+                    We are a company specializing in website and application development, digital marketing, IT solutions, 
+                    and financial and legal services. We help companies with digital transformation and build a strong 
+                    and sustainable presence in the digital landscape.
+                </p>
+                <p class="about__description">
+                    Our comprehensive approach combines cutting-edge technology with strategic business insights to deliver 
+                    solutions that drive growth and innovation. Whether you're looking to establish your online presence, 
+                    streamline operations, or navigate complex digital challenges, we're here to transform your vision 
+                    into reality.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section__title">Our Services</h2>
+            <p class="section__subtitle">Comprehensive digital solutions tailored to your needs</p>
+            <div class="services__grid" id="services-grid">
+                <!-- Services will be loaded dynamically from JSON -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section" id="features">
+        <div class="container">
+            <h2 class="section__title">Why Choose Us</h2>
+            <p class="section__subtitle">Products that are built to excel</p>
+            <div class="features__grid">
+                <div class="feature__item">
+                    <div class="feature__icon">🦅</div>
+                    <h3 class="feature__title">Fast</h3>
+                    <p class="feature__description">Lightning-fast performance that keeps your users engaged</p>
+                </div>
+                <div class="feature__item">
+                    <div class="feature__icon">🦅</div>
+                    <h3 class="feature__title">Secure</h3>
+                    <p class="feature__description">Enterprise-grade security to protect your data and users</p>
+                </div>
+                <div class="feature__item">
+                    <div class="feature__icon">🦅</div>
+                    <h3 class="feature__title">User-friendly</h3>
+                    <p class="feature__description">Intuitive interfaces that delight users and drive engagement</p>
+                </div>
+                <div class="feature__item">
+                    <div class="feature__icon">🦅</div>
+                    <h3 class="feature__title">Tailored to Your Brand</h3>
+                    <p class="feature__description">Custom solutions that reflect your unique brand identity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta section" id="contact">
+        <div class="container">
+            <div class="cta__content">
+                <h2 class="cta__title">Get In Touch</h2>
+                <form class="cta__form" id="contact-form">
+                    <div class="form__group">
+                        <label for="fullname" class="form__label">Full Name</label>
+                        <input type="text" id="fullname" name="fullname" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="contact" class="form__label">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" class="form__input" required>
+                    </div>
+                    <div class="form__group">
+                        <label for="details" class="form__label">Details Description</label>
+                        <textarea id="details" name="details" class="form__textarea" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <p class="footer__tagline">Transform your vision into powerful digital experiences</p>
+                </div>
+                <div class="footer__info">
+                    <p class="footer__copyright">&copy; 2025 Falcon of Codes. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
+

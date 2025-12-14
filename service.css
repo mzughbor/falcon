@@ -1,0 +1,124 @@
+/* Service Detail Page Styles */
+.service-detail {
+    margin-top: var(--header-height);
+    padding: 4rem 0;
+    background-color: var(--color-white);
+}
+
+.service-detail__content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem;
+    border: var(--border-width-thick) solid var(--color-black);
+    background-color: var(--color-bg-light);
+    box-shadow: var(--brutal-shadow-hover);
+}
+
+.service-detail__header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.service-detail__icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.service-detail__title {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+}
+
+.service-detail__description {
+    font-size: 1.25rem;
+    color: var(--color-black);
+    line-height: 1.8;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.service-detail__section {
+    margin-bottom: 2.5rem;
+}
+
+.service-detail__section-title {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--color-black);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border-bottom: var(--border-width) solid var(--color-black);
+    padding-bottom: 0.5rem;
+}
+
+.service-detail__features,
+.service-detail__benefits {
+    list-style: none;
+    padding: 0;
+}
+
+.service-detail__features li,
+.service-detail__benefits li {
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    border: var(--border-width) solid var(--color-black);
+    background-color: var(--color-white);
+    box-shadow: 4px 4px 0 0 var(--color-black);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.service-detail__features li:hover,
+.service-detail__benefits li:hover {
+    box-shadow: 6px 6px 0 0 var(--color-black);
+    transform: translate(-2px, -2px);
+}
+
+.service-detail__back {
+    text-align: center;
+    margin-top: 3rem;
+}
+.service-detail__back a {
+    margin: 0.5rem;
+}
+
+/* All service detail pages use the same light background */
+.service-detail__title {
+    color: var(--color-black);
+}
+
+.service-detail__description {
+    color: var(--color-black);
+}
+
+.service-detail__section-title {
+    color: var(--color-black);
+    border-bottom-color: var(--color-black);
+}
+
+.service-detail__features li,
+.service-detail__benefits li {
+    background-color: var(--color-white);
+    border-color: var(--color-black);
+    color: var(--color-black);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .service-detail__content {
+        padding: 2rem;
+    }
+    
+    .service-detail__title {
+        font-size: 2rem;
+    }
+    
+    .service-detail__description {
+        font-size: 1.125rem;
+    }
+}
+

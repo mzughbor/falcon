@@ -1,0 +1,121 @@
+{
+  "services": [
+    {
+      "id": "website-development",
+      "icon": "🌐",
+      "title": "Website and Application Development",
+      "shortDescription": "Custom website and application development solutions tailored to your business needs.",
+      "color": "primary",
+      "details": {
+        "description": "We provide custom website and application development solutions tailored to your business needs, with modern design and exceptional user experience that helps you attract customers and increase sales.",
+        "features": [
+          "Professional website design",
+          "E-commerce stores",
+          "Android & iOS applications",
+          "Latest technologies",
+          "Technical support after delivery"
+        ],
+        "benefits": [
+          "Modern design and exceptional user experience",
+          "Help attract customers and increase sales",
+          "Responsive and mobile-friendly solutions",
+          "Custom solutions tailored to your business"
+        ]
+      }
+    },
+    {
+      "id": "it-solutions",
+      "icon": "💻",
+      "title": "IT, Server, and Artificial Intelligence Solutions",
+      "shortDescription": "Comprehensive IT infrastructure and intelligent systems to optimize your business operations.",
+      "color": "blue",
+      "details": {
+        "description": "Network and server management, hosting and cloud computing, backup and data recovery, customer data analysis, and AI solutions. We provide comprehensive IT infrastructure and intelligent systems to optimize your business operations.",
+        "features": [
+          "Network and server management",
+          "Hosting and cloud computing",
+          "Backup and data recovery",
+          "Customer data analysis",
+          "AI solutions"
+        ],
+        "benefits": [
+          "Optimize business operations",
+          "Secure and reliable infrastructure",
+          "Scalable cloud solutions",
+          "Data-driven insights"
+        ]
+      }
+    },
+    {
+      "id": "digital-marketing",
+      "icon": "📈",
+      "title": "Digital Marketing",
+      "shortDescription": "Build a strong and sustainable digital presence that drives growth and engagement.",
+      "color": "green",
+      "details": {
+        "description": "Social media management, content creation, paid advertising, SEO, results analysis, digital identity building, and digital transformation. We help you build a strong and sustainable digital presence that drives growth and engagement.",
+        "features": [
+          "Social media management",
+          "Content creation",
+          "Paid advertising",
+          "SEO optimization",
+          "Results analysis",
+          "Digital identity building",
+          "Digital transformation"
+        ],
+        "benefits": [
+          "Increase brand visibility",
+          "Drive growth and engagement",
+          "Build strong digital presence",
+          "Data-driven marketing strategies"
+        ]
+      }
+    },
+    {
+      "id": "financial-services",
+      "icon": "💰",
+      "title": "Financial and Accounting Services",
+      "shortDescription": "Professional financial services to help you maintain accurate records and make informed decisions.",
+      "color": "pink",
+      "details": {
+        "description": "Auditing and review, financial statement preparation, cost accounting, budget management and cash flow management. Professional financial services to help you maintain accurate records and make informed business decisions.",
+        "features": [
+          "Auditing and review",
+          "Financial statement preparation",
+          "Cost accounting",
+          "Budget management",
+          "Cash flow management"
+        ],
+        "benefits": [
+          "Maintain accurate financial records",
+          "Make informed business decisions",
+          "Compliance with regulations",
+          "Better financial planning"
+        ]
+      }
+    },
+    {
+      "id": "legal-consulting",
+      "icon": "⚖️",
+      "title": "Legal Consulting",
+      "shortDescription": "Expert legal guidance to protect your business interests and ensure compliance.",
+      "color": "yellow",
+      "details": {
+        "description": "Contract drafting, agreement review, specialized legal consultations with complete confidentiality. Expert legal guidance to protect your business interests and ensure compliance with regulations.",
+        "features": [
+          "Contract drafting",
+          "Agreement review",
+          "Specialized legal consultations",
+          "Complete confidentiality"
+        ],
+        "benefits": [
+          "Protect business interests",
+          "Ensure compliance with regulations",
+          "Expert legal guidance",
+          "Complete confidentiality"
+        ]
+      }
+    }
+  ]
+}
+
