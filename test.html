@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect Teams – Neo‑Brutalism</title>
+
+  <style>
+    /* ===============================
+       COLOR SYSTEM (YOUR PALETTE)
+       =============================== */
+    :root {
+      --c1: #160959; /* deep indigo */
+      --c2: #7a0261; /* purple */
+      --c3: #be2f5a; /* magenta */
+      --c4: #eb6e4e; /* coral */
+      --c5: #feb24d; /* orange */
+      --c6: #f9f871; /* yellow */
+
+      --bg-main: #fdfcf6;
+      --text-dark: #160959;
+      --border: 3px solid #160959;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 24px;
+      background: #fdfcf6; /* revert to clean light background */
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ===============================
+       PAGE CONTAINER
+       =============================== */
+    .page {
+      max-width: 1200px;
+      width: 100%;
+      background: #fffdf5;
+      border: var(--border);
+      border-radius: 20px;
+      padding: 36px 36px 0; /* remove bottom gap */
+      box-shadow: 12px 12px 0 var(--c3);
+    }
+
+    /* ===============================
+       HEADER
+       =============================== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--text-dark);
+      gap: 10px;
+    }
+
+    .logo-box {
+      width: 32px;
+      height: 32px;
+      background: var(--c6);
+      border: var(--border);
+      box-shadow: 3px 3px 0 var(--c3);
+      border-radius: 6px;
+    }
+
+    nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .login {
+      padding: 8px 16px;
+      background: var(--c6);
+      border: var(--border);
+      box-shadow: 4px 4px 0 var(--c3);
+      border-radius: 6px;
+    }
+
+    /* ===============================
+       GRID SYSTEM (REFERENCE-ACCURATE)
+       =============================== */
+
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: 32px;
+      align-items: start;
+    }
+
+    /* ===============================
+       MAIN GRID CONTENT
+       =============================== */
+       =============================== */
+    .hero-text {
+      align-self: start;
+    }
+
+    /* illustration sits on same grid row edge */
+    .visual {
+      align-self: end;
+      margin-bottom: -6px;
+    }
+
+    .hero h1 {
+      font-size: 64px;
+      line-height: 1.05;
+      margin: 0 0 20px;
+      color: var(--text-dark);
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 520px;
+      margin-bottom: 32px;
+    }
+
+    .hero-actions a {
+      display: inline-block;
+      padding: 14px 26px;
+      margin-right: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      border: var(--border);
+      box-shadow: 5px 5px 0 var(--c3);
+      border-radius: 8px;
+    }
+
+    .primary {
+      background: var(--c6);
+      color: var(--text-dark);
+    }
+
+    .secondary {
+      background: white;
+      color: var(--text-dark);
+    }
+
+    /* ===============================
+       HERO VISUAL
+       =============================== */
+    .visual {
+      position: relative;
+      height: auto;
+      margin: 0; /* zero gap */
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .visual img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      object-fit: contain;
+    }
+
+    /* removed background box under illustration */
+
+    /* ===============================
+       CARDS
+       =============================== */
+    .cards {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    /* illustration locks to card grid */
+    .visual {
+      margin-bottom: -6px;
+    }
+
+    /* second-row yellow emphasis */
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .card {
+      padding: 28px;
+      border: var(--border);
+      border-radius: 16px;
+      box-shadow: 8px 8px 0 var(--c3);
+    }
+
+    .card.dark {
+      background: linear-gradient(135deg, var(--c2), var(--c3));
+      color: white;
+    }
+
+    .card.light {
+      background: var(--c6);
+      color: var(--text-dark);
+      box-shadow: 10px 10px 0 var(--c4);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .card a {
+      font-weight: 700;
+      color: inherit;
+    }
+
+    /* ===============================
+       FOOTER
+       =============================== */
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: var(--border);
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <header>
+      <div class="logo">
+        <div class="logo-box"></div>
+        Connect teams
+      </div>
+      <nav>
+        <a href="#">Products</a>
+        <a href="#">Startup tools</a>
+        <a href="#">Features</a>
+        <a href="#">Our plans</a>
+        <a href="#" class="login">Login</a>
+      </nav>
+    </header>
+
+    <div class="layout-grid main-grid">
+
+      <!-- HERO TEXT -->
+      <div class="hero-text" style="grid-column: 1 / span 6;">
+        <h1>Collaborate<br />across the world</h1>
+        <p>
+          A selective platform to connect great talents around the globe,
+          build yours now.
+        </p>
+        <div class="hero-actions">
+          <a class="secondary" href="#">Get started today</a>
+          <a class="primary" href="#">Our plans</a>
+        </div>
+      </div>
+
+      <!-- HERO ILLUSTRATION -->
+      <div class="visual" style="grid-column: 7 / span 6;">
+        <img src="assets/original-c34f2ac3a222392163bfe6720986ded7.png" alt="People illustration" />
+      </div>
+
+      <!-- CARD 1 -->
+      <div class="card dark" style="grid-column: 1 / span 6;">
+        <h3>Community insights</h3>
+        <p>
+          All communications are encrypted and fully secure. Privacy first,
+          always.
+        </p>
+        <a href="#">Check the community →</a>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="card light" style="grid-column: 7 / span 6;">
+        <h3>Free live support</h3>
+        <p>
+          Our support team is available whenever you need help.
+        </p>
+        <a href="#">Compare plans →</a>
+      </div>
+
+    </div>
+
+    
+
+    <footer>
+      <span>Privacy · Terms · Help center</span>
+      <span>© Connect teams</span>
+    </footer>
+
+  </main>
+</body>
+</html>
