@@ -1,6 +1,6 @@
 /* CSS Variables - Neobrutalism */
 :root {
-    --color-primary: #dd4814;
+    --color-primary: #eb6e4e;
     --color-primary-dark: #b8380f;
     --color-white: #ffffff;
     --color-black: #000000;
@@ -9,10 +9,10 @@
     --color-gray-light: #666666;
     --color-gray-lighter: #999999;
     --color-bg-light: #f5f5f5;
-    --color-yellow: #ffd700;
-    --color-blue: #4a90e2;
-    --color-green: #50c878;
-    --color-pink: #ff6b9d;
+    --color-yellow: #f9f871;
+    --color-blue: #0063a6;
+    --color-green: #60dac2;
+    --color-pink: #be2f5a;
     
     /* Gradient colors from test.html */
     --color-grad-1: #160959;
@@ -247,7 +247,7 @@ ul {
     font-size: 5rem;
     font-weight: 900;
     margin: 0 0 25px 0;
-    color: #003a87;
+    color: var(--color-blue);
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 1.1;
