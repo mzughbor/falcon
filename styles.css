@@ -1,36 +1,60 @@
 /* CSS Variables - Neobrutalism */
 :root {
-    --color-primary: #eb6e4e;
+    --color-primary: #f48c66;
     --color-primary-dark: #b8380f;
     --color-white: #ffffff;
-    --color-black: #000000;
+    --color-black: #191157;
     --color-gray-dark: #1a1a1a;
     --color-gray: #333333;
     --color-gray-light: #666666;
     --color-gray-lighter: #999999;
     --color-bg-light: #f5f5f5;
-    --color-yellow: #f9f871;
-    --color-blue: #0063a6;
-    --color-green: #60dac2;
+    --color-yellow: #faf98d;
+    --color-blue: #008abd;
+    --color-green: #90e5d4;
     --color-pink: #be2f5a;
     
+    /* Color Base Islam Shaders and tensions */
+    --color-main-shader-1: #00acec;
+    --color-main-shader-2: #009bd4;
+    --color-main-shader-3: #008abd;
+    --color-main-shader-4: #0078a5;
+    --color-main-shader-5: #00678e;
+    --color-main-shader-6: #005676;
+    --color-main-shader-7: #00455e;
+    --color-main-shader-8: #003447;
+    --color-main-shader-9: #00222f;
+    --color-main-shader-10: #001118;
+
+    --color-main-tint-1: #00acec;
+    --color-main-tint-2: #1ab4ee;
+    --color-main-tint-3: #33bdf0;
+    --color-main-tint-4: #4dc5f2;
+    --color-main-tint-5: #66cdf4;
+    --color-main-tint-6: #80d6f6;
+    --color-main-tint-7: #99def7;
+    --color-main-tint-8: #b3e6f9;
+    --color-main-tint-9: #cceefb;
+    --color-main-tint-10: #d9f2fd;
+
     /* Gradient colors from test.html */
     --color-grad-1: #160959;
     --color-grad-2: #7a0261;
     --color-grad-3: #be2f5a;
     --color-grad-4: #eb6e4e;
     --color-grad-5: #feb24d;
-    --color-grad-6: #f9f871;
+    --color-grad-6: #faf98d;
     
     /* Neo-brutalism colors from test.html */
-    --color-background: #fcf9f2;
-    --color-accent-yellow: #f9f871;
+    --color-background: #e8e7ee;
+    --color-accent-yellow: #faf98d;
     --color-accent-green: #a7f038;
-    --color-card-pink: #ffe0d5;
+    --color-card-blue: #99def7;
     --color-border: #000000;
+    --text-color-black: #0b0822;
     
-    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    
+    --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
     --header-height: 80px;
     --container-width: 1200px;
     --section-padding: 80px 0;
@@ -143,17 +167,13 @@ ul {
 /* Logo hover effect handled by .nav__logo:hover img */
 
 .nav__logo img {
-    /*transition: filter 0.6s ease-in-out;*/
+    transition: filter 0.6s ease-in-out;
     filter: hue-rotate(0deg) saturate(120%) brightness(1);
-}
-
-.nav__logo:hover img {
-    filter: hue-rotate(150deg) saturate(100%) brightness(1.2);
 }
 
 .nav__logo img {
     height: 60px;
-    width: auto;
+    max-width: 60px;
 }
 
 .nav__menu {
@@ -209,12 +229,14 @@ ul {
     position: relative;
     overflow: hidden;
     border-bottom: var(--border-width-thick) solid var(--color-border);
-    padding: 0; /* Remove section padding */
+    padding: 0;
     /* Multi-color brutalist shadow */
+    /*
     box-shadow: 
         6px 6px 0 var(--color-grad-1),
         12px 12px 0 var(--color-grad-2),
         18px 18px 0 var(--color-grad-3);
+    */
 }
 
 .hero__container {
@@ -224,6 +246,35 @@ ul {
     max-width: 1200px;
     margin: 80px auto;
     padding: 0 20px;
+}
+
+/* styles.css (New styles for the SVG Shape in Hero Section) */
+/*
+.hero__shape-container {
+    position: absolute;
+    bottom: 10px;
+    left: 20%;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    filter: drop-shadow(4px 4px 0 var(--color-grad-4));
+}
+
+.hero__svg-shape {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+*/
+
+/* Define the slow spin animation */
+@keyframes slow-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .hero__grid {
@@ -243,11 +294,17 @@ ul {
     box-shadow: none;
 }
 
+.hero__content h1:visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.8s ease-out;
+}
+
 .hero__content h1 {
     font-size: 5rem;
     font-weight: 900;
     margin: 0 0 25px 0;
-    color: var(--color-blue);
+    color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -256,14 +313,34 @@ ul {
     background-clip: unset;
     -webkit-text-fill-color: unset;
     text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    /* Add animation properties */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Add visible state for animation */
+.hero__content h1.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .hero__content p {
     font-size: 1.5rem;
     line-height: 1.6;
-    margin-bottom: 1rem;
     color: var(--color-black);
     font-weight: 500;
+    /* Add animation properties */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+/* Add visible state for animation */
+.hero__content p.visible {
+    opacity: 1;
+    transform: translateY(0);
+    margin-bottom: 4rem;
 }
 
 .hero__image {
@@ -274,6 +351,16 @@ ul {
     padding: 0;
     margin: 0;
     align-self: start;
+    /* Add floating animation */
+    opacity: 0;
+    /*transform: translateY(5px) scale(.85);*/
+    /*transition: opacity 1.2s ease-out 0.4s, transform 1.2s ease-out 0.4s;*/
+}
+
+.hero__image.visible {
+    opacity: 1;
+    transform: translateY(5px) scale(1.85);
+    z-index: -1;
 }
 
 .hero__image img {
@@ -281,7 +368,6 @@ ul {
     width: 100%;
     height: auto;
     object-fit: contain;
-    transform: scale(1.85);
     border: none;
     box-shadow: none;
     z-index: -1;
@@ -289,9 +375,68 @@ ul {
     margin-bottom: 45px;
 }
 
+/* rounding svg element */
+.star-of-life-icon {
+  width: 55px;
+  height: 55px;
+  position: relative;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: opacity 0.3s ease;
+  margin-left: 2rem;
+  margin-top: -2.2rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero_img_path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /*transition: opacity 0.3s ease;*/
+}
+
+.hero_img_path_2 {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Additional styles for the curved path */
+.hero-curve {
+  stroke: var(--color-black);
+  stroke-width: 3;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawCurve 3s ease-in-out forwards;
+}
+
+@keyframes drawCurve {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Hero Boxes */
 .hero-box {
-    border: var(--border-width) solid var(--color-border);
     margin: 0;
     box-shadow: var(--brutal-shadow);
     padding: 2rem;
@@ -299,12 +444,22 @@ ul {
 
 .hero-box--1 {
     grid-column: 1 / span 6;
-    background-color: var(--color-card-pink);
+    background-color: var(--color-card-blue);
+    border: var(--border-width) solid var(--color-card-blue);
+}
+
+.hero-box--1:hover {
+    background-color: var(--color-accent-yellow);
 }
 
 .hero-box--2 {
     grid-column: 7 / span 6;
     background-color: var(--color-accent-yellow);
+    border: var(--border-width) solid var(--color-accent-yellow);   
+}
+
+.hero-box--2:hover {
+    background-color: var(--color-card-blue);
 }
 
 .hero-box h3 {
@@ -320,7 +475,7 @@ ul {
     font-size: 1.125rem;
     line-height: 1.6;
     margin: 0;
-    color: var(--color-black);
+    color: var(--text-color-black);
     font-weight: 500;
 }
 
@@ -386,7 +541,13 @@ ul {
     gap: 2rem;
     justify-content: space-between;
     align-items: center;
-    height: max-content;
+    height: -webkit-fill-available;
+}
+
+.card__hero:hover {
+    box-shadow: var(--brutal-shadow-hover);
+    transform: translate(-4px, -4px);
+    border: var(--border-width) solid var(--color-black);
 }
 
 .card__hero__img {
@@ -472,7 +633,6 @@ ul {
 
 .service__card--primary .service__title,
 .service__card--blue .service__title,
-.service__card--green .service__title,
 .service__card--pink .service__title {
     color: var(--color-white);
 }
@@ -487,7 +647,6 @@ ul {
 
 .service__card--primary .service__description,
 .service__card--blue .service__description,
-.service__card--green .service__description,
 .service__card--pink .service__description {
     color: var(--color-white);
 }
@@ -564,6 +723,7 @@ ul {
 .feature__item:hover {
     box-shadow: var(--brutal-shadow-hover);
     transform: translate(-4px, -4px);
+    background-color: var(--color-main-tint-5);
 }
 
 /* All feature items now have white background */
@@ -644,16 +804,20 @@ ul {
     border-bottom: var(--border-width-thick) solid var(--color-black);
 }
 
-    .cta__content {
-        max-width: 700px;
-        margin: 0 auto;
-        opacity: 0;
-        transform: translateY(30px);
-        padding: 2rem;
-        border: var(--border-width-thick) solid var(--color-white);
-        background-color: var(--color-primary);
-        box-shadow: 8px 8px 0 0 var(--color-white);
-    }
+.cta__content {
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0;
+    transform: translateY(30px);
+    padding: 2rem;
+    border: var(--border-width-thick) solid var(--color-white);
+    background-color: var(--color-primary);
+    box-shadow: 8px 8px 0 0 var(--color-white);
+}
+
+.about.section,.cta.section {
+    background-image: url("world-ca.png");
+}
 
 .cta__content.visible {
     opacity: 1;
@@ -730,7 +894,7 @@ ul {
 
 /* Footer */
 .footer {
-    background-color: var(--color-black);
+    background-color: var(--color-border);
     color: var(--color-white);
     padding: 3rem 0 2rem;
     border-top: var(--border-width-thick) solid var(--color-white);
@@ -776,6 +940,18 @@ ul {
     }
 }
 
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
 /* Responsive Design */
 /* Large tablet and small desktop styles */
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
@@ -793,7 +969,7 @@ ul {
     
     .hero__content p {
         font-size: 1.3rem;
-        margin-bottom: auto;
+        margin-bottom: 2rem;
     }
     
     .hero__image {
@@ -801,7 +977,7 @@ ul {
     }
     
     .hero__image img {
-        transform: scale(1.5);
+        /*transform: scale(1.5);*/
         margin-bottom: 0px;
     }
     
@@ -816,10 +992,30 @@ ul {
     .hero-box h3 {
         font-size: 1.5rem;
     }
+    
+    /* Adjust SVG shape for larger tablets/desktops */
+    .hero__shape-container {
+        left: 250px;
+        transform: none;
+        width: 80px;
+        height: 80px;
+    }
 }
 
 /* Tablet-specific styles */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
+    /*
+    .hero__shape-container {
+        position: fixed;
+        bottom: 10px;
+        left: 20%;
+        z-index: 10;
+        width: 60px; 
+        height: 60px;
+        filter: drop-shadow(4px 4px 0 var(--color-grad-4));
+    }
+    */
+
     .hero {
         padding: 2rem 0;
     }
@@ -838,6 +1034,7 @@ ul {
         font-size: 3rem;
     }
     
+    
     .hero__content p {
         font-size: 1.25rem;
     }
@@ -849,7 +1046,7 @@ ul {
     }
     
     .hero__image img {
-        transform: scale(1.5);
+        /*transform: scale(1.5);*/
         margin-bottom: 0;
     }
     
@@ -868,6 +1065,14 @@ ul {
     
     .hero-box h3 {
         font-size: 1.5rem;
+    }
+    
+    /* Adjust SVG shape for tablets */
+    .hero__shape-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 70px;
+        height: 70px;
     }
 }
 
@@ -906,10 +1111,14 @@ ul {
     }
     
     .hero__image img {
-        transform: scale(1.5);
-        margin: 0%;        
+        /*transform: scale(1.5);*/
+        margin-bottom: 0;        
     }
-    
+
+    .hero__content p.visible {
+        margin-bottom: 3rem;
+    }
+
     .hero-box--1 {
         grid-column: 1;
     }
@@ -976,10 +1185,24 @@ ul {
     .hero-box {
         padding: 20px;
         margin-bottom: 2.5rem;
-    }    
+    }
+    
+    /* Adjust SVG shape for mobile devices */
+    .hero__shape-container {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 50px;
+        bottom: 5px;
+    }
 }
 
 @media screen and (max-width: 480px) {
+
+    .hero__image.visible {
+        transform: translateY(5px) scale(1.7);
+    }
+
     .hero {
         padding: 2rem 0;
         min-height: auto;
@@ -1014,6 +1237,19 @@ ul {
 
     .card__hero {
         gap: 1rem;
+    }
+    
+    /* Further adjust SVG shape for small mobile devices */
+    .hero__shape-container {
+        width: 40px;
+        height: 40px;
+        bottom: 3px;
+    }
+    
+    .star-of-life-icon {
+        width: 40px;
+        height: 40px;
+        margin-left: 1.2rem;
     }
 }
 

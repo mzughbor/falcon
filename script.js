@@ -308,3 +308,86 @@ if (contactForm) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  const star = document.querySelector('.star-of-life-icon');
+  
+  // Define how much to rotate per pixel scrolled. 
+  // 0.5 means 1 pixel scroll = 0.5 degrees rotation.
+  const rotationFactor = 0.5; 
+
+  window.addEventListener('scroll', () => {
+    // 1. Get the current vertical scroll position
+    const scrollPosition = window.scrollY;
+    
+    // 2. Calculate the rotation angle
+    // The modulo operation (%) ensures the degree value wraps around (0-360) for cleaner numbers, though CSS handles this anyway.
+    const rotationAngle = (scrollPosition * rotationFactor) % 360; 
+    
+    // 3. Apply the rotation via the transform style
+    star.style.transform = `rotate(${rotationAngle}deg)`;
+  });
+});
+
+// Add this function to animate hero content on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate hero content immediately on page load
+    const heroTitle = document.querySelector('.hero__content h1');
+    const heroText = document.querySelector('.hero__content p');
+    const heroImage = document.querySelector('.hero__image');
+    
+    if (heroTitle) {
+        setTimeout(() => {
+            heroTitle.classList.add('visible');
+        }, 100);
+    }
+    
+    if (heroText) {
+        setTimeout(() => {
+            heroText.classList.add('visible');
+        }, 300);
+    }
+    
+    if (heroImage) {
+        setTimeout(() => {
+            heroImage.classList.add('visible');
+            
+            // Add continuous floating animation after initial animation
+            setTimeout(() => {
+                const heroImgElement = heroImage.querySelector('img');
+                if (heroImgElement) {
+                    heroImgElement.style.animation = 'float 3s ease-in-out infinite';
+                }
+            }, 1200);
+        }, 500);
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const shapeContainer = document.querySelector('.hero__shape-container');
+
+    if (!shapeContainer) return;
+
+    // --- Mouse Follow Effect Setup ---
+    
+    // REDUCED FACTOR: 0.02 means the shape moves only 2% of the mouse's distance 
+    // from the center, making the effect much more subtle.
+    const movementFactor = 0.02; 
+
+    window.addEventListener('mousemove', (e) => {
+        // Get the center of the window
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+
+        // Calculate the mouse distance from the center
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+
+        // Calculate the desired translation (movement)
+        const translateX = mouseX * movementFactor;
+        const translateY = mouseY * movementFactor;
+        
+        // Apply the translation to the shape container
+        shapeContainer.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    });
+});
+

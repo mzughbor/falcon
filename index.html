@@ -22,7 +22,11 @@
     <link rel="canonical" href="https://falconofcodes.com/">
     <title>Falcon of Codes - Transform Your Vision into Digital Experiences</title>
     <link rel="stylesheet" href="styles.css">
-    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -70,7 +74,7 @@
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#home" class="nav__logo" aria-label="Falcon of Codes Home">
-                <img src="Logo.png" alt="Falcon of Codes Logo" width="200" height="80" loading="eager">
+                <img src="main-logo.png" alt="Falcon of Codes Logo" width="200" height="80" loading="eager">
             </a>
             <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
@@ -96,14 +100,23 @@
             </ul>
         </nav>
     </header>
-
+    
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="home">        
+
+        <svg aria-hidden="true" class="hero_img_path" viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M-1 663C3648-193 7705 4976 15136 94" class="hero-curve"></path>
+            <path d="M 15136 94 C 7705 4976 3648 -193 -1 663" class="hero-curve"></path>
+        </svg>
+        <svg class="hero_img_path_2" viewBox="0 0 5000 3500" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13604 2153C1882-1145 4732 1398 1216 1953M13664 2231C1912-1175 4762 1438 1223 1989" class="hero-curve"></path>
+        </svg>
+
         <div class="hero__container">
             <div class="hero__grid">
                 <div class="hero__content">
                     <h1>Falcon of Codes</h1>
-                    <p>We are a company specializing in website and application development, digital marketing, IT solutions, and financial and legal services.</p>
+                    <p>Meet Our Team of experts our company is specializing in website and application development, digital marketing, IT solutions, and financial and legal services.</p>
                 </div>
                 <div class="hero__image">
                     <img src="assets/original-c34f2ac3a222392163bfe6720986ded7.png" alt="Digital Solutions Illustration" loading="eager">
@@ -130,7 +143,7 @@
     <section class="about section" id="about">
         <div class="container">
             <div class="about__content">
-                <h2 class="section__title">About Falcon of Codes</h2>
+                <h2 class="section__title about__title">About Falcon of Codes</h2>
                 <p class="about__description">
                     We are a company specializing in website and application development, digital marketing, IT solutions, 
                     and financial and legal services. We help companies with digital transformation and build a strong 
@@ -149,6 +162,13 @@
     <!-- Services Section -->
     <section class="services section" id="services">
         <div class="container">
+        <!--
+            <div class="hero__shape-container">
+                <svg viewBox="0 0 20 20" class="hero__svg-shape" aria-hidden="true">
+                    <path d="M19 19H5V5h14v14zm-5-2h2v-2h-2v2zm0-4h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-4h2v-2h-2v2zm-4 4h2v-2H6v2zm0-4h2v-2H6v2z" fill="var(--color-primary)" stroke="var(--color-black)" stroke-width="0.5"/>
+                </svg>
+            </div> 
+        -->           
             <h2 class="section__title">Our Services</h2>
             <p class="section__subtitle">Comprehensive digital solutions tailored to your needs</p>
             <div class="services__grid" id="services-grid">
@@ -160,6 +180,10 @@
     <!-- Features Section -->
     <section class="features section" id="features">
         <div class="container">
+            <svg aria-hidden="true" class="star-of-life-icon e-font-icon-svg e-fas-star-of-life" viewBox="0 0 480 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M471.99 334.43L336.06 256l135.93-78.43c7.66-4.42 10.28-14.2 5.86-21.86l-32.02-55.43c-4.42-7.65-14.21-10.28-21.87-5.86l-135.93 78.43V16c0-8.84-7.17-16-16.01-16h-64.04c-8.84 0-16.01 7.16-16.01 16v156.86L56.04 94.43c-7.66-4.42-17.45-1.79-21.87 5.86L2.15 155.71c-4.42 7.65-1.8 17.44 5.86 21.86L143.94 256 8.01 334.43c-7.66 4.42-10.28 14.21-5.86 21.86l32.02 55.43c4.42 7.65 14.21 10.27 21.87 5.86l135.93-78.43V496c0 8.84 7.17 16 16.01 16h64.04c8.84 0 16.01-7.16 16.01-16V339.14l135.93 78.43c7.66 4.42 17.45 1.8 21.87-5.86l32.02-55.43c4.42-7.65 1.8-17.43-5.86-21.85z"></path>
+            </svg>
+
             <h2 class="section__title">Why Choose Us</h2>
             <p class="section__subtitle">Products that are built to excel</p>
             <div class="features__grid">
