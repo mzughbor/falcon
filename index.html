@@ -92,6 +92,9 @@
                     <a href="#services" class="nav__link">Services</a>
                 </li>
                 <li class="nav__item">
+                    <a href="#works" class="nav__link">Portfolio</a>
+                </li>
+                <li class="nav__item">
                     <a href="#features" class="nav__link">Features</a>
                 </li>
                 <li class="nav__item">
@@ -200,6 +203,17 @@
         </div>
     </section>
 
+    <!-- Latest Works Section -->
+    <section class="works section" id="works">
+        <div class="container">
+            <h2 class="section__title">Our Profile</h2>
+            <p class="section__subtitle">Check out our recent projects and creative work</p>
+            <div class="works__grid" id="works-grid">
+                <!-- Works will be loaded dynamically from JavaScript -->
+            </div>
+        </div>
+    </section>
+
     <!-- Features Section -->
     <section class="features section" id="features">
         <div class="container">
@@ -271,6 +285,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Fullscreen Video Modal -->
+    <div class="video-modal" id="video-modal">
+        <button class="video-modal__close" id="video-modal-close" aria-label="Close video">
+            <span>✕</span>
+        </button>
+        <div class="video-modal__content">
+            <video id="modal-video" controls autoplay>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
 
     <script src="script.js" defer></script>
 </body>

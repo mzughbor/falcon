@@ -1,0 +1,240 @@
+/* CSS Variables - Neobrutalism */
+:root {
+    --color-primary: #f48c66;
+    --color-primary-dark: #b8380f;
+    --color-white: #ffffff;
+    --color-black: #191157;
+    --color-gray-dark: #1a1a1a;
+    --color-gray: #333333;
+    --color-gray-light: #666666;
+    --color-gray-lighter: #999999;
+    --color-bg-light: #f5f5f5;
+    --color-yellow: #faf98d;
+    --color-blue: #008abd;
+    --color-green: #90e5d4;
+    --color-pink: #be2f5a;
+    
+    /* Color Base Islam Shaders and tensions */
+    --color-main-shader-1: #00acec;
+    --color-main-shader-2: #009bd4;
+    --color-main-shader-3: #008abd;
+    --color-main-shader-4: #0078a5;
+    --color-main-shader-5: #00678e;
+    --color-main-shader-6: #005676;
+    --color-main-shader-7: #00455e;
+    --color-main-shader-8: #003447;
+    --color-main-shader-9: #00222f;
+    --color-main-shader-10: #001118;
+
+    --color-main-tint-1: #00acec;
+    --color-main-tint-2: #1ab4ee;
+    --color-main-tint-3: #33bdf0;
+    --color-main-tint-4: #4dc5f2;
+    --color-main-tint-5: #66cdf4;
+    --color-main-tint-6: #80d6f6;
+    --color-main-tint-7: #99def7;
+    --color-main-tint-8: #b3e6f9;
+    --color-main-tint-9: #cceefb;
+    --color-main-tint-10: #d9f2fd;
+
+    /* Gradient colors from test.html */
+    --color-grad-1: #160959;
+    --color-grad-2: #7a0261;
+    --color-grad-3: #be2f5a;
+    --color-grad-4: #eb6e4e;
+    --color-grad-5: #feb24d;
+    --color-grad-6: #faf98d;
+    
+    /* Neo-brutalism colors from test.html */
+    --color-background: #e8e7ee;
+    --color-accent-yellow: #faf98d;
+    --color-accent-green: #a7f038;
+    --color-card-blue: #99def7;
+    --color-border: #000000;
+    --text-color-black: #0b0822;
+    
+    --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+    --header-height: 80px;
+    --container-width: 1200px;
+    --section-padding: 80px 0;
+    
+    --border-width: 4px;
+    --border-width-thick: 6px;
+    --transition: all 0.2s ease;
+    --brutal-shadow: 8px 8px 0 0 var(--color-black);
+    --brutal-shadow-hover: 12px 12px 0 0 var(--color-black);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-black);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-color: var(--color-white);
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Section */
+.section {
+    padding: var(--section-padding);
+}
+
+.section__title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--color-black);
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+}
+
+.section__subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--color-black);
+    margin-bottom: 3rem;
+    font-weight: 600;
+}
+
+
+
+
+
+
+/* -------------------------------- */
+
+
+/* Neo-Brutalist Styles */
+.neo-brutalist-work {
+    background: #000;
+    color: #fff;
+    padding: 100px 20px;
+    margin: 50px 0;
+    border-top: 20px solid #FF00FF; /* Hot pink accent */
+    border-bottom: 20px solid #00FF00; /* Lime green accent */
+  }
+  
+  .neo-brutalist-work .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .neo-brutalist-work h2 {
+    font-family: 'Courier New', monospace;
+    font-size: 8rem;
+    text-align: center;
+    margin-bottom: 80px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    -webkit-text-stroke: 4px #00FFFF; /* Electric blue outline */
+    color: #fff;
+    text-shadow: 10px 10px 0 #FF00FF;
+  }
+  
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    position: relative;
+  }
+  
+  .work-card {
+    background: #fff;
+    color: #000;
+    border: 15px solid #000;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .work-card:hover {
+    transform: translate(-10px, -10px) scale(1.05);
+    box-shadow: 20px 20px 0 #FF00FF;
+  }
+  
+  .work-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .card-content {
+    padding: 30px;
+    font-family: 'Arial Black', sans-serif;
+  }
+  
+  .card-content h3 {
+    font-size: 3rem;
+    margin: 0 0 20px;
+    text-transform: uppercase;
+  }
+  
+  .card-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+  }
+  
+  .btn {
+    display: inline-block;
+    background: #00FF00;
+    color: #000;
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    border: 8px solid #000;
+    transition: background 0.3s;
+  }
+  
+  .btn:hover {
+    background: #FF00FF;
+    color: #fff;
+  }
+  
+  /* Asymmetry: Overlap one card */
+  .overlap {
+    position: relative;
+    top: -50px;
+    z-index: 2;
+  }
+  
+  /* Responsive tweak */
+  @media (max-width: 768px) {
+    .neo-brutalist-work h2 { font-size: 4rem; }
+    .overlap { top: 0; }
+  }

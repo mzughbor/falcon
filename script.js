@@ -274,6 +274,173 @@ if (document.getElementById('services-grid')) {
     loadServices();
 }
 
+// Works Data (Latest Works / Portfolio)
+if (typeof window.worksData === 'undefined') {
+    window.worksData = {
+        "works": [
+            {
+                "id": "create-identity",
+                "title": "Create Your Identity",
+                "description": "We provide a stunning brand identity video showcasing creative design and modern aesthetics.",
+                "category": "Branding",
+                "thumbnail": "assets/portfolio/Create-Your-Identity.jpg",
+                "videoUrl": "https://slategrey-dog-729906.hostingersite.com/wp-content/uploads/2024/09/Create-Your-Identity-6.mp4"
+            },
+            {
+                "id": "high-quality-printing",
+                "title": "High-Quality printing",
+                "description": "We provide high-quality printing services to help you create professional and engaging visual content.",
+                "category": "Web Design",
+                "thumbnail": "assets/portfolio/High-Quality-printing.jpg",
+                "videoUrl": "https://slategrey-dog-729906.hostingersite.com/wp-content/uploads/2024/09/High-Quality-printing-5.mp4"
+            },
+            {
+                "id": "international-exhibition",
+                "title": "International Exhibition",
+                "description": "We provide international exhibition services to help you showcase your products and services to a global audience.",
+                "category": "App Development",
+                "thumbnail": "assets/portfolio/International-Exhbition.jpg",
+                "videoUrl": "https://slategrey-dog-729906.hostingersite.com/wp-content/uploads/2024/09/International-Exhbition-3.mp4"
+            },
+            {
+                "id": "one-name-to-success",
+                "title": "One Name to Success",
+                "description": "We help you to be successful.",
+                "category": "Branding",
+                "thumbnail": "assets/portfolio/Motivation-to-Achieve-Goals.jpg",
+                "videoUrl": "assets/portfolio/video/Motivation-to-achieve-goals-1.mp4"
+            },
+            {
+                "id": "motivation-to-achieve-goals",
+                "title": "Motivation to Achieve Goals",
+                "description": "We help you to be motivated to achieve your goals.",
+                "category": "Branding",
+                "thumbnail": "assets/portfolio/One-Name-to-Success.jpg",
+                "videoUrl": "https://slategrey-dog-729906.hostingersite.com/wp-content/uploads/2024/09/One-Name-to-Success-2.mp4"
+            },
+            {
+                "id": "willingness-drives-to-creativity",
+                "title": "Willingness Drives to Creativity",
+                "description": "We help you to be creative and innovative.",
+                "category": "Branding",
+                "thumbnail": "assets/portfolio/Willingness-Drives-to-Creativity.jpg",
+                "videoUrl": "https://slategrey-dog-729906.hostingersite.com/wp-content/uploads/2024/09/Willingness-Drives-to-Creativity-4.mp4"
+            }
+        ]
+    };
+}
+
+// Load Works from embedded data
+function loadWorks() {
+    const worksGrid = document.getElementById('works-grid');
+    
+    if (!worksGrid) return;
+    
+    const data = window.worksData;
+    if (!data || !data.works) return;
+    
+    worksGrid.innerHTML = '';
+    
+    data.works.forEach(work => {
+        const workCard = document.createElement('article');
+        workCard.className = 'work__card';
+        workCard.setAttribute('data-work-id', work.id);
+        workCard.setAttribute('data-video-url', work.videoUrl);
+        
+        workCard.innerHTML = `
+            <div class="work__thumbnail">
+                <img src="${work.thumbnail}" alt="${work.title}" loading="lazy">
+                <div class="work__play-icon">▶</div>
+            </div>
+            <div class="work__content">
+                <h3 class="work__title">${work.title}</h3>
+                <p class="work__description">${work.description}</p>
+                <span class="work__category">${work.category}</span>
+            </div>
+        `;
+        
+        // Add click event to open video in fullscreen
+        workCard.addEventListener('click', () => {
+            openVideoModal(work.videoUrl);
+        });
+        
+        worksGrid.appendChild(workCard);
+        
+        // Observe each new card for animation
+        observer.observe(workCard);
+    });
+}
+
+// Fullscreen Video Modal Functions
+function openVideoModal(videoUrl) {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('modal-video');
+    const source = video.querySelector('source');
+    
+    if (!modal || !video || !source) return;
+    
+    // Set video source
+    source.src = videoUrl;
+    video.load();
+    
+    // Show modal
+    modal.classList.add('active');
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Play video
+    video.play().catch(err => {
+        console.log('Video autoplay prevented:', err);
+    });
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('video-modal');
+    const video = document.getElementById('modal-video');
+    
+    if (!modal || !video) return;
+    
+    // Pause and reset video
+    video.pause();
+    video.currentTime = 0;
+    
+    // Hide modal
+    modal.classList.remove('active');
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+}
+
+// Video Modal Event Listeners
+const videoModal = document.getElementById('video-modal');
+const videoModalClose = document.getElementById('video-modal-close');
+
+if (videoModalClose) {
+    videoModalClose.addEventListener('click', closeVideoModal);
+}
+
+if (videoModal) {
+    // Close on background click
+    videoModal.addEventListener('click', (e) => {
+        if (e.target === videoModal) {
+            closeVideoModal();
+        }
+    });
+    
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && videoModal.classList.contains('active')) {
+            closeVideoModal();
+        }
+    });
+}
+
+// Load works on page load
+if (document.getElementById('works-grid')) {
+    loadWorks();
+}
+
 // Initialize active nav on page load
 updateActiveNav();
 

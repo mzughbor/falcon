@@ -30,3 +30,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Video files
+assets/portfolio/video/*
+.mp4
+.mp3
