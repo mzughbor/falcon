@@ -48,6 +48,17 @@ function updateActiveNav() {
     const scrollY = window.pageYOffset;
     const headerHeight = header.offsetHeight;
     
+    // Special handling for home section (top of page)
+    if (scrollY === 0) {
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#home') {
+                link.classList.add('active');
+            }
+        });
+        return;
+    }
+    
     sections.forEach(section => {
         const sectionHeight = section.offsetHeight;
         const sectionTop = section.offsetTop - headerHeight - 50;
@@ -88,8 +99,11 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Unobserve after animation to improve performance
-            observer.unobserve(entry.target);
+            // Remove unobserve to allow animations to replay
+            // observer.unobserve(entry.target);
+        } else {
+            // Remove visible class when leaving view to allow replay
+            entry.target.classList.remove('visible');
         }
     });
 }, observerOptions);
@@ -328,70 +342,53 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// Add this function to animate hero content on page load
-document.addEventListener('DOMContentLoaded', () => {
-    // Animate hero content immediately on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Add scroll-triggered animations for hero content
+    const heroSection = document.querySelector('.hero');
     const heroTitle = document.querySelector('.hero__content h1');
     const heroText = document.querySelector('.hero__content p');
     const heroImage = document.querySelector('.hero__image');
     
-    if (heroTitle) {
-        setTimeout(() => {
-            heroTitle.classList.add('visible');
-        }, 100);
-    }
-    
-    if (heroText) {
-        setTimeout(() => {
-            heroText.classList.add('visible');
-        }, 300);
-    }
-    
-    if (heroImage) {
-        setTimeout(() => {
-            heroImage.classList.add('visible');
-            
-            // Add continuous floating animation after initial animation
-            setTimeout(() => {
-                const heroImgElement = heroImage.querySelector('img');
-                if (heroImgElement) {
-                    heroImgElement.style.animation = 'float 3s ease-in-out infinite';
+    if (heroSection && heroTitle && heroText) {
+        const heroContentObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add visible class to hero content elements
+                    heroTitle.classList.add('visible');
+                    heroText.classList.add('visible');
+                    if (heroImage) {
+                        heroImage.classList.add('visible');
+                        
+                        // Add continuous floating animation after initial animation
+                        setTimeout(() => {
+                            const heroImgElement = heroImage.querySelector('img');
+                            if (heroImgElement) {
+                                heroImgElement.style.animation = 'float 3s ease-in-out infinite';
+                            }
+                        }, 1200);
+                    }
+                } else {
+                    // Remove visible class when leaving view to allow replay
+                    heroTitle.classList.remove('visible');
+                    heroText.classList.remove('visible');
+                    if (heroImage) {
+                        heroImage.classList.remove('visible');
+                        
+                        // Remove floating animation
+                        const heroImgElement = heroImage.querySelector('img');
+                        if (heroImgElement) {
+                            heroImgElement.style.animation = '';
+                        }
+                    }
                 }
-            }, 1200);
-        }, 500);
-    }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const shapeContainer = document.querySelector('.hero__shape-container');
-
-    if (!shapeContainer) return;
-
-    // --- Mouse Follow Effect Setup ---
-    
-    // REDUCED FACTOR: 0.02 means the shape moves only 2% of the mouse's distance 
-    // from the center, making the effect much more subtle.
-    const movementFactor = 0.02; 
-
-    window.addEventListener('mousemove', (e) => {
-        // Get the center of the window
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-
-        // Calculate the mouse distance from the center
-        const mouseX = e.clientX - centerX;
-        const mouseY = e.clientY - centerY;
-
-        // Calculate the desired translation (movement)
-        const translateX = mouseX * movementFactor;
-        const translateY = mouseY * movementFactor;
+            });
+        }, {
+            threshold: 0.1
+        });
         
-        // Apply the translation to the shape container
-        shapeContainer.style.transform = `translate(${translateX}px, ${translateY}px)`;
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+        heroContentObserver.observe(heroSection);
+    }
+    
     const heroSvgContainer = document.querySelector('.hero-svg-container');
     
     if (heroSvgContainer) {

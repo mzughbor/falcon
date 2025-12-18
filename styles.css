@@ -196,9 +196,10 @@ ul {
 .nav__link.active {
     color: var(--color-black);
     background-color: var(--color-primary);
-    /*border-color: var(--color-black);
-    box-shadow: 4px 4px 0 0 var(--color-black);*/
+    border-color: var(--color-black);
+    box-shadow: 4px 4px 0 0 var(--color-black);
     transform: translate(-2px, -2px);
+    font-weight: 800;
 }
 
 .nav__toggle {
@@ -320,7 +321,7 @@ ul {
 .hero__content h1:visible {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.8s ease-out;
+    /* Removed CSS animation to allow JS control */
 }
 
 .hero__content h1 {
@@ -454,8 +455,8 @@ ul {
   stroke-width: .05;
   fill: none;
   stroke-linecap: round;
-  stroke-dasharray: 5;
-  stroke-dashoffset: 50;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
   /* Removed automatic animation */
 }
 
@@ -473,16 +474,25 @@ ul {
 
 .curve-first {
     fill : var(--color-main-tint-10);
-
 }
 
 .curve-second {
     fill: var(--color-primary);
 }
 
+.one-star {
+    fill: var(--color-white);
+}
+
+.one-star:hover {
+    fill: var(--color-primary);
+}
+
+/* Clean up duplicate hero-curve_1 definition */
 .hero-curve_1 {
   stroke: var(--color-black);
-  stroke-width: .05;
+  stroke-width: .03;
+  opacity: 0.75;
   fill: none;
   stroke-linecap: round;
   stroke-dasharray: 0.5rem 0.3rem;
@@ -626,7 +636,7 @@ ul {
     padding: 2.5rem;
     border: var(--border-width) solid var(--color-black);
     box-shadow: var(--brutal-shadow);
-    transition: var(--transition);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     text-align: center;
     opacity: 0;
     transform: translateY(30px);
@@ -638,7 +648,7 @@ ul {
 .service__card.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.6s ease-out;
+    /* Removed CSS animation to allow JS control */
 }
 
 .service__card:hover {
@@ -764,7 +774,7 @@ ul {
     border: var(--border-width) solid var(--color-black);
     text-align: center;
     box-shadow: var(--brutal-shadow);
-    transition: var(--transition);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     opacity: 0;
     transform: translateY(30px);
 }
@@ -772,7 +782,7 @@ ul {
 .feature__item.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.6s ease-out;
+    /* Removed CSS animation to allow JS control */
 }
 
 .feature__item:hover {
@@ -827,12 +837,13 @@ ul {
     padding: 3rem;
     background-color: var(--color-white);
     box-shadow: var(--brutal-shadow);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .about__content.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.8s ease-out;
+    /* Removed CSS animation to allow JS control */
 }
 
 .about__description {
@@ -870,6 +881,7 @@ ul {
 
 .about.section > .container {
     position: relative;
+    overflow: visible;
 }
 
 @keyframes fadeInLeftToRight {
@@ -913,6 +925,7 @@ ul {
     border: var(--border-width-thick) solid var(--color-white);
     background-color: var(--color-primary);
     box-shadow: 8px 8px 0 0 var(--color-white);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .about.section,.cta.section {
@@ -922,7 +935,7 @@ ul {
 .cta__content.visible {
     opacity: 1;
     transform: translateY(0);
-    animation: fadeInUp 0.8s ease-out;
+    /* Removed CSS animation to allow JS control */
 }
 
 .cta__title {
@@ -1180,6 +1193,23 @@ ul {
 }
 
 @media screen and (max-width: 768px) {
+    .hero-curve_1 {
+        display: none;
+    }
+
+    .about-svg-container {
+        position: absolute;
+        top: -3rem;
+        left: -5rem;
+        z-index: 0;
+        width: 240px;
+        height: 240px;
+        z-index: 0;
+        transform: translateX(-50px);
+        transition: opacity 4s ease-out, transform 4s ease-out;
+        animation-delay: 1s;
+    }
+
     :root {
         --section-padding: 60px 0;
     }
@@ -1301,6 +1331,10 @@ ul {
 }
 
 @media screen and (max-width: 480px) {
+
+    .hero-curve_1 {
+        display: none;
+    }
 
     .hero__image.visible {
         transform: translateY(5px) scale(1.7);
