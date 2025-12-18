@@ -391,3 +391,80 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const heroSvgContainer = document.querySelector('.hero-svg-container');
+    
+    if (heroSvgContainer) {
+        // Get the SVG paths for animation - targeting both hero-curve_1 and hero-curve_2
+        const heroCurve1 = heroSvgContainer.querySelector('.hero-curve_1');
+        const heroCurve2 = heroSvgContainer.querySelector('.hero-curve_2');
+        
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {                
+                if (entry.isIntersecting) {                
+                    // Add visible class to container for opacity/transform animation
+                    heroSvgContainer.classList.add('visible');
+                    
+                    // Animate first path with 50 strokeDashoffset
+                    if (heroCurve1) {
+                        heroCurve1.style.strokeDashoffset = '50';
+                        heroCurve1.getBoundingClientRect(); // Trigger reflow
+                        setTimeout(() => {
+                            heroCurve1.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+                            heroCurve1.style.strokeDashoffset = '0';
+                        }, 0);
+                    }
+                    
+                    // Animate second path with 500 strokeDashoffset
+                    if (heroCurve2) {
+                        heroCurve2.style.strokeDashoffset = '500';
+                        heroCurve2.getBoundingClientRect(); // Trigger reflow
+                        setTimeout(() => {
+                            heroCurve2.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+                            heroCurve2.style.strokeDashoffset = '0';
+                        }, 300); // Slight delay for second path
+                    }
+                } else {                    
+                    // Remove visible class to reset
+                    heroSvgContainer.classList.remove('visible');
+                    
+                    // Reset first path
+                    if (heroCurve1) {
+                        heroCurve1.style.transition = 'none';
+                        heroCurve1.style.strokeDashoffset = '50';
+                    }
+                    
+                    // Reset second path
+                    if (heroCurve2) {
+                        heroCurve2.style.transition = 'none';
+                        heroCurve2.style.strokeDashoffset = '500';
+                    }
+                }
+            });
+        }, {
+            threshold: 0.1 // Lower threshold to trigger sooner
+        });
+        
+        heroObserver.observe(heroSvgContainer);
+    }
+    
+    // Keep your existing about section observer
+    const aboutSection = document.querySelector('.about.section');
+    const aboutSvgContainer = document.querySelector('.about-svg-container');
+    
+    if (aboutSection && aboutSvgContainer) {        
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {                
+                if (entry.isIntersecting) {
+                    aboutSvgContainer.classList.add('visible');
+                } else {
+                    aboutSvgContainer.classList.remove('visible');
+                }
+            });
+        }, {
+            threshold: 0.3
+        });
+        
+        aboutObserver.observe(aboutSection);
+    }
+});

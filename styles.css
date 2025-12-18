@@ -225,7 +225,7 @@ ul {
     min-height: calc(100vh - var(--header-height));
     display: flex;
     align-items: center;
-    background-color: var(--color-background);
+    background-color: var(--color-white);
     position: relative;
     overflow: hidden;
     border-bottom: var(--border-width-thick) solid var(--color-border);
@@ -242,7 +242,7 @@ ul {
 .hero__container {
     width: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 10; /* Ensure content is above SVG */
     max-width: 1200px;
     margin: 80px auto;
     padding: 0 20px;
@@ -266,6 +266,29 @@ ul {
     display: block;
 }
 */
+
+.hero-svg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Ensure it's behind content */
+    opacity: 0;
+    transform: scale(0.95);
+    /* Removed transition since we'll control this with JS */
+    pointer-events: none; /* Allow clicks to pass through to content */
+}
+
+.hero-svg-container.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.hero {
+    position: relative;
+    z-index: 0;
+}
 
 /* Define the slow spin animation */
 @keyframes slow-spin {
@@ -383,7 +406,7 @@ ul {
   top: 50%;
   right: 20px;
   transform: translateY(-50%);
-  z-index: 5;
+  z-index: 3;
   transition: opacity 0.3s ease;
   margin-left: 2rem;
   margin-top: -2.2rem;
@@ -404,35 +427,67 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  /*transition: opacity 0.3s ease;*/
+  z-index: 4;
+  opacity: 1;
+  /* Removed transition since we'll control this with JS */
 }
 
 .hero_img_path_2 {
   position: absolute;
   top: 15px;
-  left: 15px;
+  left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  transition: opacity 0.3s ease;
+  z-index: 3;
+  opacity: .5;
+  /* Removed transition */
+}
+
+.hero_img_path_2.visible {
+    opacity: 1;
 }
 
 /* Additional styles for the curved path */
-.hero-curve {
+
+.hero-curve_1 {
   stroke: var(--color-black);
-  stroke-width: 3;
-  fill: transparent;
+  stroke-width: .05;
+  fill: none;
   stroke-linecap: round;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: drawCurve 3s ease-in-out forwards;
+  stroke-dasharray: 50;
+  stroke-dashoffset: 50;
+  /* Removed automatic animation */
 }
 
-@keyframes drawCurve {
-  to {
-    stroke-dashoffset: 0;
-  }
+.hero-curve_2 {
+  width: 100%;
+  height: auto;
+  stroke: var(--color-black);
+  stroke-width: 2;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  /* Removed automatic animation */
+}
+
+.curve-first {
+    fill : var(--color-main-tint-10);
+
+}
+
+.curve-second {
+    fill: var(--color-primary);
+}
+
+.hero-curve_1 {
+  stroke: var(--color-black);
+  stroke-width: .05;
+  fill: none;
+  stroke-linecap: round;
+  stroke-dasharray: 0.5rem 0.3rem;
+  stroke-dashoffset: 200;
+  /* Removed automatic animation */
 }
 
 /* Hero Boxes */
@@ -795,6 +850,51 @@ ul {
     box-shadow: var(--brutal-shadow);
 }
 
+.about-svg-container {
+    position: absolute;
+    top: -3.3rem;
+    left: 3.5rem;
+    z-index: 0;
+    width: 240px;
+    height: 240px;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 4s ease-out, transform 4s ease-out;
+    /*animation-delay: 1s;*/
+}
+
+.about-svg-container.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about.section > .container {
+    position: relative;
+}
+
+@keyframes fadeInLeftToRight {
+    from {
+        opacity: 0.5;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* try later */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px) scaleX(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scaleX(1);
+    }
+}
+
 /* CTA Section */
 .cta {
     background-color: var(--color-black);
@@ -1048,6 +1148,9 @@ ul {
     .hero__image img {
         /*transform: scale(1.5);*/
         margin-bottom: 0;
+    }
+    .hero__content p.visible {
+        margin-bottom: 3rem;
     }
     
     .hero-box--1 {
