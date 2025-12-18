@@ -454,7 +454,7 @@ ul {
   stroke-width: .05;
   fill: none;
   stroke-linecap: round;
-  stroke-dasharray: 50;
+  stroke-dasharray: 5;
   stroke-dashoffset: 50;
   /* Removed automatic animation */
 }
