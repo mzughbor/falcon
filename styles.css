@@ -995,7 +995,7 @@ ul {
 }
 
 .feature__item:nth-child(4):hover::after {
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(-12deg);
 }
 .feature__item.visible {
     opacity: 1;
