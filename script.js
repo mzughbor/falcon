@@ -490,11 +490,11 @@ if (contactForm) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const star = document.querySelector('.star-of-life-icon');
+  const star = document.querySelector('.star-of-button-icon');
   
   // Define how much to rotate per pixel scrolled. 
-  // 0.5 means 1 pixel scroll = 0.5 degrees rotation.
-  const rotationFactor = 0.5; 
+  // 0.1 means 1 pixel scroll = 0.1 degrees rotation (5x slower).
+  const rotationFactor = 0.1; 
 
   window.addEventListener('scroll', () => {
     // 1. Get the current vertical scroll position
@@ -505,7 +505,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const rotationAngle = (scrollPosition * rotationFactor) % 360; 
     
     // 3. Apply the rotation via the transform style
-    star.style.transform = `rotate(${rotationAngle}deg)`;
+    // Preserve the translateY from CSS and add rotation
+    star.style.transform = `translateY(-50%) rotate(${rotationAngle}deg)`;
   });
 });
 
@@ -630,5 +631,67 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         aboutObserver.observe(aboutSection);
+    }
+});
+
+// Mouse move animation for the decorative line in about section
+document.addEventListener('DOMContentLoaded', function() {
+    const aboutContent = document.querySelector('.about__content');
+    
+    if (aboutContent) {
+        // Create a more subtle mouse move effect
+        aboutContent.addEventListener('mousemove', (e) => {
+            const rect = aboutContent.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate movement as a percentage of container size
+            const xPos = (x / rect.width) - 0.5; // -0.5 to 0.5
+            const yPos = (y / rect.height) - 0.5; // -0.5 to 0.5
+            
+            // Subtle movement (only 2-3 pixels)
+            const moveX = xPos * 6;
+            const moveY = yPos * 6;
+            
+            // Apply transform to the pseudo-element via a CSS variable
+            aboutContent.style.setProperty('--mouse-x', `${moveX}px`);
+            aboutContent.style.setProperty('--mouse-y', `${moveY}px`);
+        });
+        
+        // Reset position when mouse leaves
+        aboutContent.addEventListener('mouseleave', () => {
+            aboutContent.style.setProperty('--mouse-x', '0px');
+            aboutContent.style.setProperty('--mouse-y', '0px');
+        });
+    }
+    
+    // Mouse move animation for the features section
+    const featuresSection = document.querySelector('.features');
+    
+    if (featuresSection) {
+        // Create a more subtle mouse move effect
+        featuresSection.addEventListener('mousemove', (e) => {
+            const rect = featuresSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate movement as a percentage of container size
+            const xPos = (x / rect.width) - 0.5; // -0.5 to 0.5
+            const yPos = (y / rect.height) - 0.5; // -0.5 to 0.5
+            
+            // Subtle movement (only 2-3 pixels)
+            const moveX = xPos * 6;
+            const moveY = yPos * 6;
+            
+            // Apply transform to the features section via a CSS variable
+            featuresSection.style.setProperty('--mouse-x', `${moveX}px`);
+            featuresSection.style.setProperty('--mouse-y', `${moveY}px`);
+        });
+        
+        // Reset position when mouse leaves
+        featuresSection.addEventListener('mouseleave', () => {
+            featuresSection.style.setProperty('--mouse-x', '0px');
+            featuresSection.style.setProperty('--mouse-y', '0px');
+        });
     }
 });

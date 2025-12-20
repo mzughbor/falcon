@@ -122,6 +122,7 @@ ul {
     color: var(--color-black);
     text-transform: uppercase;
     letter-spacing: -0.02em;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
 
 .section__subtitle {
@@ -396,18 +397,43 @@ ul {
     margin-bottom: 45px;
 }
 
-/* rounding svg element */
-.star-of-life-icon {
+/* Star container to hold both the image and SVG without affecting layout */
+.star-container {
+  position: absolute;
+  z-index: 3;
+  width: 100px;
+  height: 100px;
+  pointer-events: none; /* Allow clicks to pass through to content behind */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease-out;
+  transform: translate(var(--mouse-x, 0), var(--mouse-y, 0));
+  will-change: transform;
+}
+
+.star-container img,
+.star-container svg {
+  pointer-events: auto; /* Enable interactions with the stars */
+}
+
+/* Blue star image */
+.blue-star {
   width: 55px;
   height: 55px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* rounding svg element */
+.star-of-button-icon, .star-of-top-icon {
+  width: 15px;
+  height: 25px;
   position: relative;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
   z-index: 3;
-  transition: opacity 0.3s ease;
-  margin-left: 2rem;
-  margin-top: -2.2rem;
+  transition: opacity 0.3s ease, transform 0.6s ease;
 }
 
 @keyframes spin {
@@ -482,7 +508,7 @@ ul {
 }
 
 .one-star:hover {
-    fill: var(--color-primary);
+    fill: var(--color-blue);
 }
 
 /* Clean up duplicate hero-curve_1 definition */
@@ -618,7 +644,27 @@ ul {
 
 /* Services Section */
 .services {
-    background-color: var(--color-white);
+    background-color: #cceefb5e;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/wavy-bg.png");
+    background-blend-mode: multiply, normal;
+    opacity: 0.15;
+    z-index: 0;
+}
+
+.services > .container {
+    position: relative;
+    z-index: 1;
 }
 
 .services__grid {
@@ -931,6 +977,30 @@ ul {
     border-top: var(--border-width-thick) solid var(--color-black);
     border-bottom: var(--border-width-thick) solid var(--color-black);
 }
+    
+.x_features{
+    position: relative;
+    overflow: unset; /* Prevent Line.png from extending beyond container */
+}
+
+/* Add Line.png background to features section with mouse move effect */
+.x_features::before {
+    content: "";
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-image: url("/assets/Line.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right top;
+    transition: transform 0.3s ease-out;
+    transform: translate(var(--mouse-x, 0), var(--mouse-y, 0));
+    will-change: transform;
+    z-index: 1;
+    opacity: 0.75;
+}
 
 .features__grid {
     display: grid;
@@ -948,6 +1018,22 @@ ul {
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     opacity: 0;
     transform: translateY(30px);
+    position: relative; /* Added for pseudo-element positioning */
+}
+
+/* Add Vector-yellow.png to the "Tailored to Your Brand" feature */
+.feature__item:nth-child(4)::after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    right: -15px;
+    width: 60px;
+    height: 60px;
+    background-image: url("/assets/Vector-yellow.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    z-index: 1;
 }
 
 .feature__item.visible {
@@ -996,6 +1082,7 @@ ul {
 /* About Section */
 .about {
     background-color: var(--color-white);
+    border-bottom: var(--border-width-thick) solid var(--color-border);
 }
 
 .about__content {
@@ -1009,6 +1096,24 @@ ul {
     background-color: var(--color-white);
     box-shadow: var(--brutal-shadow);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    position: relative;
+}
+
+.about__content::after {
+    content: "";
+    position: absolute;
+    /*bottom: -10px;*/
+    right: -15px;
+    width: 100px;
+    height: 100px;
+    background-image: url("/assets/Line.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    z-index: 2;
+    transition: transform 0.3s ease-out;
+    transform: translate(var(--mouse-x, 0), var(--mouse-y, 0));
+    will-change: transform;
 }
 
 .about__content.visible {
@@ -1099,8 +1204,8 @@ ul {
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.about.section,.cta.section {
-    background-image: url("world-ca.png");
+.cta.section {
+    background-image: url("/assets/world-ca.png");
 }
 
 .cta__content.visible {
@@ -1532,9 +1637,37 @@ ul {
         height: 50px;
         bottom: 5px;
     }
+    
+    .star-of-button-icon {
+        width: 15px;
+        height: 15px;
+        margin-top: 1px;
+    }    
 }
 
 @media screen and (max-width: 480px) {
+
+    .about__content::after{
+        bottom: -18px;
+        right: 10px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .x_features::before {
+        content: "";
+        position: absolute;
+        top: 2px;
+        width: 50px;
+        height: 50px;
+        opacity: 0.5;
+        right: 10px;
+    }
+
+    .blue-star {
+        width: 40px;
+        height: 40px;
+    }
 
     .hero-curve_1 {
         display: none;
@@ -1587,10 +1720,10 @@ ul {
         bottom: 3px;
     }
     
-    .star-of-life-icon {
-        width: 40px;
-        height: 40px;
-        margin-left: 1.2rem;
+    .star-of-button-icon {
+        width: 10px;
+        height: 10px;
+        margin-left: 0.2rem;
     }
 }
 
@@ -1608,4 +1741,6 @@ ul {
         scroll-behavior: auto;
     }
 }
+
+
 
