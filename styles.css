@@ -614,7 +614,7 @@ ul {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("/assets/wavy-bg.png");
+    background-image: url("assets/wavy-bg.png");
     background-blend-mode: multiply, normal;
     opacity: 0.15;
     z-index: 0;
@@ -949,7 +949,7 @@ ul {
     right: 20px;
     width: 60px;
     height: 60px;
-    background-image: url("/assets/Line.png");
+    background-image: url("assets/Line.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right top;
@@ -987,7 +987,7 @@ ul {
     right: -15px;
     width: 60px;
     height: 60px;
-    background-image: url("/assets/Vector-yellow.png");
+    background-image: url("assets/Vector-yellow.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -1067,7 +1067,7 @@ ul {
     right: -15px;
     width: 100px;
     height: 100px;
-    background-image: url("/assets/Line.png");
+    background-image: url("assets/Line.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right bottom;
@@ -1166,7 +1166,7 @@ ul {
 }
 
 .cta.section {
-    background-image: url("/assets/world-ca.png");
+    background-image: url("assets/world-ca.png");
 }
 
 .cta__content.visible {
