@@ -696,21 +696,35 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Hero Target Slider
-const slider = document.querySelector('.slider');
+// Hero Target Slider - Simplified version
+const slides = document.querySelectorAll('.slide');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 let currentSlide = 0;
-const totalSlides = 4;
 let autoSlideInterval;
 
+// Initially show the first slide
+if (slides.length > 0) {
+    slides[0].classList.add('active');
+}
+
 function updateSlider() {
-    const translateX = -currentSlide * 25;
-    slider.style.transform = `translateX(${translateX}%)`;
+    // Remove active class from all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+    
+    // Add active class to current slide
+    if (slides[currentSlide]) {
+        slides[currentSlide].classList.add('active');
+    }
 }
 
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
+    currentSlide = (currentSlide + 1) % slides.length;
+    updateSlider();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     updateSlider();
 }
 
@@ -725,8 +739,7 @@ function stopAutoSlide() {
 if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
         stopAutoSlide();
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateSlider();
+        prevSlide();
         startAutoSlide();
     });
 
@@ -738,10 +751,10 @@ if (prevBtn && nextBtn) {
 }
 
 // Pause auto-scroll on hover
-const sliderContainer = document.querySelector('.slider-container');
-if (sliderContainer) {
-    sliderContainer.addEventListener('mouseenter', stopAutoSlide);
-    sliderContainer.addEventListener('mouseleave', startAutoSlide);
+const desktopScreen = document.querySelector('.desktop-screen');
+if (desktopScreen) {
+    desktopScreen.addEventListener('mouseenter', stopAutoSlide);
+    desktopScreen.addEventListener('mouseleave', startAutoSlide);
 }
 
 // Start auto-slide on load
