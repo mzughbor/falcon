@@ -157,15 +157,7 @@ ul {
     align-items: center;
     background-color: var(--color-white);
     padding: 10px;
-    /* stop for better user experience */
-    /*
-    border: var(--border-width) solid var(--color-black);
-    box-shadow: var(--brutal-shadow);
-    transition: var(--transition);
-    */
 }
-
-/* Logo hover effect handled by .nav__logo:hover img */
 
 .nav__logo img {
     transition: filter 0.6s ease-in-out;
@@ -232,13 +224,6 @@ ul {
     overflow: hidden;
     border-bottom: var(--border-width-thick) solid var(--color-border);
     padding: 0;
-    /* Multi-color brutalist shadow */
-    /*
-    box-shadow: 
-        6px 6px 0 var(--color-grad-1),
-        12px 12px 0 var(--color-grad-2),
-        18px 18px 0 var(--color-grad-3);
-    */
 }
 
 .hero__container {
@@ -250,36 +235,16 @@ ul {
     padding: 0 20px;
 }
 
-/* styles.css (New styles for the SVG Shape in Hero Section) */
-/*
-.hero__shape-container {
-    position: absolute;
-    bottom: 10px;
-    left: 20%;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    filter: drop-shadow(4px 4px 0 var(--color-grad-4));
-}
-
-.hero__svg-shape {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-*/
-
 .hero-svg-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0; /* Ensure it's behind content */
+    z-index: 0;
     opacity: 0;
     transform: scale(0.95);
-    /* Removed transition since we'll control this with JS */
-    pointer-events: none; /* Allow clicks to pass through to content */
+    pointer-events: none;
 }
 
 .hero-svg-container.visible {
@@ -322,7 +287,6 @@ ul {
 .hero__content h1:visible {
     opacity: 1;
     transform: translateY(0);
-    /* Removed CSS animation to allow JS control */
 }
 
 .hero__content h1 {
@@ -338,7 +302,6 @@ ul {
     background-clip: unset;
     -webkit-text-fill-color: unset;
     text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-    /* Add animation properties */
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -397,13 +360,12 @@ ul {
     margin-bottom: 45px;
 }
 
-/* Star container to hold both the image and SVG without affecting layout */
 .star-container {
   position: absolute;
   z-index: 3;
   width: 100px;
   height: 100px;
-  pointer-events: none; /* Allow clicks to pass through to content behind */
+  pointer-events: none;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -414,7 +376,7 @@ ul {
 
 .star-container img,
 .star-container svg {
-  pointer-events: auto; /* Enable interactions with the stars */
+  pointer-events: auto;
 }
 
 /* Blue star image */
@@ -453,7 +415,6 @@ ul {
   height: 100%;
   z-index: 4;
   opacity: 1;
-  /* Removed transition since we'll control this with JS */
 }
 
 .hero_img_path_2 {
@@ -464,14 +425,11 @@ ul {
   height: 100%;
   z-index: 3;
   opacity: .5;
-  /* Removed transition */
 }
 
 .hero_img_path_2.visible {
     opacity: 1;
 }
-
-/* Additional styles for the curved path */
 
 .hero-curve_1 {
   stroke: var(--color-black);
@@ -480,7 +438,6 @@ ul {
   stroke-linecap: round;
   stroke-dasharray: 100;
   stroke-dashoffset: 100;
-  /* Removed automatic animation */
 }
 
 .hero-curve_2 {
@@ -492,7 +449,6 @@ ul {
   stroke-linecap: round;
   stroke-dasharray: 500;
   stroke-dashoffset: 500;
-  /* Removed automatic animation */
 }
 
 .curve-first {
@@ -504,14 +460,18 @@ ul {
 }
 
 .one-star {
-    fill: var(--color-white);
+    fill: var(--color-blue);
+    animation: colorShift 3s ease-in-out infinite alternate;
 }
 
 .one-star:hover {
-    fill: var(--color-blue);
+    fill: var(--color-green);
 }
 
-/* Clean up duplicate hero-curve_1 definition */
+.star-container:hover {
+    transform: scale(1.1);
+}
+
 .hero-curve_1 {
   stroke: var(--color-black);
   stroke-width: .03;
@@ -520,7 +480,6 @@ ul {
   stroke-linecap: round;
   stroke-dasharray: 0.5rem 0.3rem;
   stroke-dashoffset: 200;
-  /* Removed automatic animation */
 }
 
 /* Hero Boxes */
@@ -596,7 +555,6 @@ ul {
     transform: translate(-4px, -4px);
 }
 
-/* Hide original button styles in hero section */
 .hero .btn {
     display: none;
 }
