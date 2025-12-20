@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // 3. Apply the rotation via the transform style
     // Preserve the translateY from CSS and add rotation
-    star.style.transform = `translateY(-50%) rotate(${rotationAngle}deg)`;
+    // star.style.transform = `translateY(-50%) rotate(${rotationAngle}deg)`;
   });
 });
 
