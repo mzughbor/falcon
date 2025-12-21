@@ -13,6 +13,7 @@
     --color-blue: #008abd;
     --color-green: #90e5d4;
     --color-pink: #be2f5a;
+    --color-mobile-bg-from-logo: #160766;
 
     /* Color Base Islam Shaders and tensions */
     --color-main-shader-1: #00acec;
@@ -1594,6 +1595,18 @@ ul {
     }
 }
 
+/* Horizontal 50/50 background split for mobile (flipped) */
+@media screen and (max-width: 1200px) {
+    .hero::before {
+        background: linear-gradient(to top, var(--color-main-tint-5) 50%, var(--color-primary) 50%);
+        width: 100%;
+    }
+    
+    .hero::after {
+        display: none;
+    }
+}
+
 /* Responsive Design */
 /* 1200 1064 girl fix */
 @media screen and (min-width: 1026px) and (max-width: 1460px) {
@@ -1605,6 +1618,7 @@ ul {
         width: 125px;
     }
 }
+
 
 /* Medium screens (1025px to 1200px) - Hero in one column, centered 2/3 width */
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
