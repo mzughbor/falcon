@@ -796,3 +796,32 @@ if (heroTargetContainer) {
 
     heroTargetObserver.observe(heroTargetContainer);
 }
+
+// FAQ Accordion Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const faqItems = document.querySelectorAll('.faq__item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq__question');
+        const answer = item.querySelector('.faq__answer');
+        const icon = question.querySelector('.faq__icon');
+        
+        question.addEventListener('click', () => {
+            // Close all other FAQ items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherAnswer = otherItem.querySelector('.faq__answer');
+                    const otherIcon = otherItem.querySelector('.faq__icon');
+                    otherAnswer.classList.remove('open');
+                    otherItem.querySelector('.faq__question').classList.remove('active');
+                    otherIcon.textContent = '+';
+                }
+            });
+            
+            // Toggle current item
+            answer.classList.toggle('open');
+            question.classList.toggle('active');
+            icon.textContent = answer.classList.contains('open') ? '×' : '+';
+        });
+    });
+});
