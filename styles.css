@@ -216,14 +216,39 @@ ul {
 /* Hero Section */
 .hero {
     margin-top: var(--header-height);
-    min-height: calc(100vh - var(--header-height));
+    min-height: calc(76vh - var(--header-height));
     display: flex;
     align-items: center;
-    background-color: var(--color-white);
+    background-color: transparent;
     position: relative;
     overflow: hidden;
     border-bottom: var(--border-width-thick) solid var(--color-border);
     padding: 0;
+    /* Create 50/50 split with borders */
+}
+
+.hero::before,
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    border: 2px solid var(--color-black);
+    box-sizing: border-box;
+}
+
+.hero::before {
+    left: 0;
+    width: 50%;
+    z-index: -1;
+    background-color: var(--color-primary);
+}
+
+.hero::after {
+    right: 0;
+    width: 50%;
+    background-color: var(--color-main-tint-5);
+    z-index: -1;
 }
 
 .hero__container {
@@ -277,7 +302,7 @@ ul {
     align-items: center;
     margin-bottom: 0;
 }
-
+2px
 .hero__content {
     flex: 0 0 calc((100% - 2rem) / 2);
     background-color: transparent;
@@ -295,7 +320,7 @@ ul {
     font-size: 5rem;
     font-weight: 900;
     margin: 0 0 25px 0;
-    color: var(--color-black);
+    color: var(--color-white);
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 1.1;
@@ -303,7 +328,7 @@ ul {
     -webkit-background-clip: unset;
     background-clip: unset;
     -webkit-text-fill-color: unset;
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    text-shadow: 3px 3px #333333;
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -316,10 +341,10 @@ ul {
 }
 
 .hero__content p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.6;
-    color: var(--color-black);
-    font-weight: 500;
+    color: var(--color-white);
+    font-weight: 600;
     /* Add animation properties */
     opacity: 0;
     transform: translateY(30px);
@@ -1056,7 +1081,7 @@ ul {
 
 .hero-target__container {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     align-items: center;
     flex: 0 0 calc((100% - 2rem) / 2);
     position: relative;
@@ -1080,6 +1105,35 @@ ul {
     z-index: 10;
 }
 
+.vector-shape {
+    position: absolute;
+    top: -80px;
+    right: -20px;
+    width: 80px;
+    height: auto;
+    z-index: 12;
+}
+
+.mobile-framer-image {
+    position: absolute;
+    bottom: -50px;
+    left: 35px;
+    width: 245px;
+    height: auto;
+    z-index: 11;
+}
+
+.zigzag-border {
+    position: absolute;
+    z-index: 13;
+    object-fit: cover;
+    top: 46px;
+    right: -34px;
+    width: 80px;
+    z-index: 13;
+    object-fit: cover;
+}
+
 .framer-container {
     flex: 1;
     position: relative;
@@ -1091,21 +1145,25 @@ ul {
 
 .framer-img {
     width: 100%;
-    height: auto;
     position: relative;
     z-index: 1;
+    height: auto;
+    overflow: hidden;
 }
 
 .desktop-screen {
     position: absolute;
     /* Adjust positioning based on framer image */
-    top: 6%;
+    top: 5%;
     left: 0;
     width: 98%;
     height: 85%;
     z-index: 0;
     overflow: hidden;
     border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 25px;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 10px;
 }
 
 .desktop-img {
@@ -1209,6 +1267,25 @@ ul {
 
     .tablet-img {
         max-width: 150px;
+    }
+
+    .mobile-framer-image {
+        width: 237px;
+        border: 0;
+        border-top-left-radius: 20px;
+        left: -70px;
+        
+    }
+
+    .vector-shape {
+        width: 55px;
+        top: -60px;
+        right: 10px;
+    }
+
+    .zigzag-border {
+        width: 60px;
+        right: -26px;
     }
 }
 
@@ -1888,17 +1965,47 @@ ul {
     }
 
     .desktop-screen {
-        top: 5%;
-        width: 96%;
-        height: 82%;
+        top: 6.2%;
+        width: 100%;
+        height: 85%;
+        left: -1px;
+        border-bottom-right-radius: 20px;
+        border-top-right-radius: 8px;        
     }
 }
 
+@media screen and (min-width: 481px) and (max-width: 769px) {
+
+    .mobile-framer-image {
+        width: 155px;
+        border: 0;
+        left: -30px;
+        bottom: -40px;
+        border-top-left-radius: 20px;
+    }
+
+
+}
+
 @media screen and (max-width: 480px) {
+    
+    .zigzag-border {
+        width: 40px;
+        right: -6px;
+    }
+
+    .mobile-framer-image {
+        width: 145px;
+        border: 0;
+        left: -8px;
+        bottom: -40px;
+    }
+
     .desktop-screen {
         top: 5%;
-        width: 100%;
-        height: 87%;
+        width: 99%;
+        height: 85%;
+        border-top-left-radius: 20px;
     }
 
     .about__content::after {
