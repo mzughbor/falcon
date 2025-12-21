@@ -1086,6 +1086,14 @@ ul {
     align-items: center;
     flex: 0 0 calc((100% - 2rem) / 2);
     position: relative;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-target__container.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .man-image {
@@ -1095,6 +1103,27 @@ ul {
     width: 120px;
     height: auto;
     z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-out 0.5s, transform 0.5s ease-out 0.5s;
+}
+
+.hero-target__container.visible .man-image {
+    opacity: 1;
+    transform: translateY(0);
+    animation: float-small 3s ease-in-out infinite;
+}
+
+@keyframes float-small {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .girl-image {
@@ -1104,6 +1133,19 @@ ul {
     width: 130px;
     height: auto;
     z-index: 10;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease-out 0.6s, transform 0.5s ease-out 0.6s;
+}
+
+.hero-target__container.visible .girl-image {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.girl-image:hover {
+    transform: translateY(0) scale(1.06);
+    transition: transform 0.3s ease-in-out;
 }
 
 .vector-shape {
@@ -1113,15 +1155,108 @@ ul {
     width: 80px;
     height: auto;
     z-index: 12;
+    opacity: 0;
+    transform: translate(10px, -10px);
+    transition: opacity 0.5s ease-out 0.7s, transform 0.5s ease-out 0.7s;
+}
+
+.hero-target__container.visible .vector-shape {
+    opacity: 1;
+    transform: translate(0, 0);
+    animation: float-vector 3s ease-in-out infinite;
+}
+
+.vector-shape:hover {
+    transform: translate(0, 0) scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hero-target__container.visible .vector-shape {
+    animation: float-vector 3s ease-in-out infinite, scale-pulse 2s ease-in-out infinite;
+}
+
+@keyframes float-vector {
+    0% {
+        transform: translate(0, 0) translateY(0);
+    }
+    50% {
+        transform: translate(0, 0) translateY(-3px);
+    }
+    100% {
+        transform: translate(0, 0) translateY(0);
+    }
+}
+
+@keyframes scale-pulse {
+    0% {
+        transform: translate(0, 0) translateY(0) scale(1);
+    }
+    50% {
+        transform: translate(0, 0) translateY(-3px) scale(1.03);
+    }
+    100% {
+        transform: translate(0, 0) translateY(0) scale(1);
+    }
 }
 
 .mobile-framer-image {
     position: absolute;
-    bottom: -50px;
-    left: 35px;
-    width: 245px;
+    bottom: -40px;
+    left: 70px;
+    width: 175px;
     height: auto;
     z-index: 11;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.hero-target__container.visible .mobile-framer-image {
+    opacity: 1;
+    transform: translateX(0);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateX(0) translateY(0);
+    }
+    50% {
+        transform: translateX(0) translateY(-15px);
+    }
+    100% {
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.iphone-shadow {
+    position: absolute;
+    bottom: -60px;
+    left: 45px;
+    width: 200px;
+    height: auto;
+    z-index: 10;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+}
+
+.hero-target__container.visible .iphone-shadow {
+    opacity: 0.7;
+    transform: translateX(0);
+    animation: shrink-pulse 2s ease-in-out infinite;
+}
+
+@keyframes shrink-pulse {
+    0% {
+        transform: translateX(0) scaleX(1);
+    }
+    50% {
+        transform: translateX(0) scaleX(0.95);
+    }
+    100% {
+        transform: translateX(0) scaleX(1);
+    }
 }
 
 .zigzag-border {
@@ -1133,6 +1268,14 @@ ul {
     width: 80px;
     z-index: 13;
     object-fit: cover;
+    opacity: 0;
+    transform: translateX(15px);
+    transition: opacity 0.5s ease-out 0.8s, transform 0.5s ease-out 0.8s;
+}
+
+.hero-target__container.visible .zigzag-border {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .framer-container {
@@ -1142,6 +1285,14 @@ ul {
     max-width: 800px;
     /* Adjust based on image size */
     height: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out 0.4s, transform 0.6s ease-out 0.4s;
+}
+
+.hero-target__container.visible .framer-container {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .framer-img {
@@ -1208,6 +1359,14 @@ ul {
     flex-direction: column;
     gap: 1rem;
     justify-content: center;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.6s ease-out 0.3s, transform 0.6s ease-out 0.3s;
+}
+
+.hero-target__container.visible .slider-buttons {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .slider-btn {
@@ -1271,7 +1430,7 @@ ul {
     }
 
     .mobile-framer-image {
-        width: 237px;
+        width: 122px;
         border: 0;
         border-top-left-radius: 20px;
         left: -70px;
@@ -1282,6 +1441,12 @@ ul {
         width: 55px;
         top: -60px;
         right: 10px;
+    }
+
+    .iphone-shadow {
+        width: 120px;
+        bottom: -55px;
+        left: -60px;
     }
 
     .zigzag-border {
@@ -1598,7 +1763,7 @@ ul {
 /* Horizontal 50/50 background split for mobile (flipped) */
 @media screen and (max-width: 1200px) {
     .hero::before {
-        background: linear-gradient(to top, var(--color-main-tint-5) 50%, var(--color-primary) 50%);
+        background: linear-gradient(to top, var(--color-main-tint-5) 60%, var(--color-primary) 50%);
         width: 100%;
     }
     
@@ -1653,6 +1818,21 @@ ul {
         right: 15px;
         font-size: 1.8rem;
     }
+    
+    .iphone-shadow {
+        width: 200px;
+        bottom: -60px;
+        left: 60px;
+    }
+}
+
+/* bigger than 1440px */
+@media screen and (min-width: 1441px) { 
+    .iphone-shadow {
+        width: 200px;
+        bottom: -60px;
+        left: 60px;
+    }
 }
 
 /* Large tablet and small desktop styles */
@@ -1705,6 +1885,12 @@ ul {
         transform: none;
         width: 80px;
         height: 80px;
+    }
+    
+    .iphone-shadow {
+        width: 180px;
+        bottom: -55px;
+        left: 55px;
     }
 }
 
@@ -1990,8 +2176,14 @@ ul {
 
 @media screen and (min-width: 481px) and (max-width: 769px) {
 
+    .iphone-shadow {
+        width: 180px;
+        bottom: -55px;
+        left: -52px;
+    }
+
     .mobile-framer-image {
-        width: 155px;
+        width: 140px;
         border: 0;
         left: -30px;
         bottom: -40px;
@@ -2002,17 +2194,23 @@ ul {
 }
 
 @media screen and (max-width: 480px) {
-    
+
+    .iphone-shadow {
+        width: 120px;
+        bottom: -45px;
+        left: 11px;
+    }
+
     .zigzag-border {
         width: 40px;
         right: -6px;
     }
 
     .mobile-framer-image {
-        width: 145px;
+        width: 120px;
         border: 0;
-        left: -8px;
-        bottom: -40px;
+        left: 10px;
+        bottom: -24px;
     }
 
     .desktop-screen {

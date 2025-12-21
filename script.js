@@ -736,6 +736,12 @@ function stopAutoSlide() {
     clearInterval(autoSlideInterval);
 }
 
+function resetSlider() {
+    // Reset to first slide
+    currentSlide = 0;
+    updateSlider();
+}
+
 if (prevBtn && nextBtn) {
     prevBtn.addEventListener('click', () => {
         stopAutoSlide();
@@ -759,3 +765,34 @@ if (desktopScreen) {
 
 // Start auto-slide on load
 startAutoSlide();
+
+// Add observer for hero-target__container animations
+const heroTargetContainer = document.querySelector('.hero-target__container');
+
+if (heroTargetContainer) {
+    const heroTargetObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove and re-add visible class to replay animations
+                heroTargetContainer.classList.remove('visible');
+                // Force reflow
+                void heroTargetContainer.offsetWidth;
+                heroTargetContainer.classList.add('visible');
+                
+                // Reset slider when container becomes visible
+                if (typeof startAutoSlide === 'function' && typeof resetSlider === 'function') {
+                    stopAutoSlide();
+                    resetSlider();
+                    startAutoSlide();
+                }
+            } else {
+                // Remove visible class when leaving view to allow replay
+                heroTargetContainer.classList.remove('visible');
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    heroTargetObserver.observe(heroTargetContainer);
+}
