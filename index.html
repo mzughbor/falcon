@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 
     <head>
         <meta charset="UTF-8">
@@ -23,11 +23,253 @@
         <meta name="twitter:image" content="assets/Logo-Test-1-.png">
         <link rel="canonical" href="https://falconofcodes.com/">
         <title>Falcon of Codes - Transform Your Vision into Digital Experiences</title>
-        <link rel="stylesheet" href="styles.css">
+        <style>
+            /* Critical CSS for above-the-fold content */
+            :root {
+                --color-primary: #f48c66;
+                --color-white: #ffffff;
+                --color-black: #191157;
+                --color-gray-dark: #1a1a1a;
+                --color-gray: #333333;
+                --color-bg-light: #f5f5f5;
+                --color-main-tint-5: #66cdf4;
+                --color-mobile-bg-from-logo: #160766;
+                --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+                --header-height: 80px;
+                --container-width: 1200px;
+                --section-padding: 80px 0;
+                --border-width: 4px;
+                --border-width-thick: 6px;
+                --transition: all 0.2s ease;
+                --brutal-shadow: 8px 8px 0 0 var(--color-black);
+            }
+            
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            html {
+                scroll-behavior: smooth;
+                font-size: 16px;
+            }
+            
+            body {
+                font-family: var(--font-family);
+                color: var(--color-black);
+                line-height: 1.6;
+                overflow-x: hidden;
+                background-color: var(--color-white);
+                font-weight: 500;
+            }
+            
+            .no-js .hero-target__container {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .no-js .man-image,
+            .no-js .girl-image,
+            .no-js .vector-shape,
+            .no-js .mobile-framer-image,
+            .no-js .iphone-shadow,
+            .no-js .zigzag-border {
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            
+            .header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background-color: var(--color-white);
+                border-bottom: var(--border-width) solid var(--color-black);
+                z-index: 1000;
+            }
+            
+            .nav {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: var(--header-height);
+                max-width: var(--container-width);
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+            
+            .nav__logo img {
+                height: 60px;
+                max-width: 60px;
+            }
+            
+            .hero {
+                margin-top: var(--header-height);
+                min-height: calc(76vh - var(--header-height));
+                display: flex;
+                align-items: center;
+                background-color: transparent;
+                position: relative;
+                overflow: hidden;
+                border-bottom: var(--border-width-thick) solid var(--color-border);
+                padding: 0;
+            }
+            
+            .hero::before,
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                height: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero::before {
+                left: 0;
+                width: 50%;
+                z-index: -1;
+                background-color: var(--color-primary);
+            }
+            
+            .hero::after {
+                right: 0;
+                width: 50%;
+                background-color: var(--color-main-tint-5);
+                z-index: -1;
+            }
+            
+            .hero__container {
+                width: 100%;
+                position: relative;
+                z-index: 10;
+                max-width: 1200px;
+                margin: 80px auto;
+                padding: 0 20px;
+            }
+            
+            .hero__grid {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 2rem;
+                align-items: center;
+                margin-bottom: 0;
+            }
+            
+            .hero__content {
+                flex: 0 0 calc((100% - 2rem) / 2);
+                background-color: transparent;
+                padding: 0;
+                border: none;
+                box-shadow: none;
+            }
+            
+            .hero__content h1 {
+                font-size: 5rem;
+                font-weight: 900;
+                margin: 0 0 25px 0;
+                color: var(--color-white);
+                text-transform: uppercase;
+                letter-spacing: -0.02em;
+                line-height: 1.1;
+                background: none;
+                -webkit-background-clip: unset;
+                background-clip: unset;
+                -webkit-text-fill-color: unset;
+                text-shadow: 3px 3px #333333;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            
+            .hero__content h1.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .hero__content p {
+                font-size: 1.25rem;
+                line-height: 1.6;
+                color: var(--color-white);
+                font-weight: 600;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+            }
+            
+            .hero__content p.visible {
+                opacity: 1;
+                transform: translateY(0);
+                margin-bottom: 4rem;
+            }
+            
+            .hero-target__container {
+                display: flex;
+                gap: 3rem;
+                align-items: center;
+                flex: 0 0 calc((100% - 2rem) / 2);
+                position: relative;
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            }
+            
+            .hero-target__container.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .mobile-framer-image {
+                position: absolute;
+                bottom: -40px;
+                left: 70px;
+                width: 175px;
+                height: auto;
+                z-index: 11;
+                opacity: 0;
+                transform: translateX(-20px);
+                transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+            }
+            
+            .hero-target__container.visible .mobile-framer-image {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            
+            @media (max-width: 1024px) {
+                .hero-target__container {
+                    flex-direction: column;
+                    gap: 2rem;
+                }
+                
+                .mobile-framer-image {
+                    width: 137px;
+                    border: 0;
+                    border-top-left-radius: 20px;
+                    left: -70px;
+                }
+                
+                .iphone-shadow {
+                    width: 120px;
+                    bottom: -45px;
+                    left: -65px;
+                }
+            }
+        </style>
+        <link rel="preload" href="assets/main-logo.png" as="image">
+        <link rel="preload" href="assets/transparent-web-framer.png" as="image">
+        <link rel="preload" href="assets/man.png" as="image">
+        <link rel="preload" href="assets/girl.png" as="image">
+        <link rel="preload" href="assets/mobile-framer-shadow.png" as="image">
+        <link rel="preload" href="assets/shadow-iphone.png" as="image">
+        <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-            rel="stylesheet">
+            rel="stylesheet" crossorigin="anonymous">
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <!-- Structured Data -->
         <script type="application/ld+json">
     {
@@ -76,7 +318,7 @@
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="#home" class="nav__logo" aria-label="Falcon of Codes Home">
-                    <img src="assets/main-logo.png" alt="Falcon of Codes Logo" width="200" height="80" loading="eager">
+                    <img src="assets/main-logo.png" alt="Falcon of Codes Logo" width="200" height="80" loading="eager" decoding="async">
                 </a>
                 <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
                     <span></span>
@@ -136,34 +378,34 @@
                     </div>
                     -->
                     <div class="hero-target__container">
-                        <img src="assets/mobile-framer-shadow.png" alt="Mobile Framer" class="mobile-framer-image">
-                        <img src="assets/shadow-iphone.png" alt="iPhone Shadow" class="iphone-shadow">
+                        <img src="assets/mobile-framer-shadow.png" alt="Mobile Framer" class="mobile-framer-image" loading="eager" decoding="async">
+                        <img src="assets/shadow-iphone.png" alt="iPhone Shadow" class="iphone-shadow" loading="eager" decoding="async">
                         <div class="slider-buttons">
                             <button class="slider-btn prev-btn" aria-label="Previous slide">‹</button>
                             <button class="slider-btn next-btn" aria-label="Next slide">›</button>
                         </div>
                         <div class="framer-container">
-                            <img src="assets/zigziagy-line.png" alt="Zigzag Border" class="zigzag-border">
-                            <img src="assets/3-primaery-fill-vectors.png" alt="Elegant Vector Shape" class="vector-shape">
-                            <img src="assets/man.png" alt="Man" class="man-image">
-                            <img src="assets/transparent-web-framer.png" alt="Web Framer" class="framer-img">
+                            <img src="assets/zigziagy-line.png" alt="Zigzag Border" class="zigzag-border" loading="eager" decoding="async">
+                            <img src="assets/3-primaery-fill-vectors.png" alt="Elegant Vector Shape" class="vector-shape" loading="eager" decoding="async">
+                            <img src="assets/man.png" alt="Man" class="man-image" loading="eager" decoding="async">
+                            <img src="assets/transparent-web-framer.png" alt="Web Framer" class="framer-img" loading="eager" decoding="async">
                             <div class="desktop-screen">
                                 <div class="slider">
                                     <div class="slide">
-                                        <img src="assets/slides/1.jpg" alt="Create Your Identity">
+                                        <img src="assets/slides/1.jpg" alt="Create Your Identity" loading="lazy" decoding="async">
                                     </div>
                                     <div class="slide">
-                                        <img src="assets/slides/2.jpg" alt="High Quality Printing">
+                                        <img src="assets/slides/2.jpg" alt="High Quality Printing" loading="lazy" decoding="async">
                                     </div>
                                     <div class="slide">
-                                        <img src="assets/slides/3.jpg" alt="International Exhibition">
+                                        <img src="assets/slides/3.jpg" alt="International Exhibition" loading="lazy" decoding="async">
                                     </div>
                                     <div class="slide">
-                                        <img src="assets/slides/4.jpg" alt="Motivation to Achieve Goals">
+                                        <img src="assets/slides/4.jpg" alt="Motivation to Achieve Goals" loading="lazy" decoding="async">
                                     </div>
                                 </div>
                             </div>
-                            <img src="assets/girl.png" alt="Girl" class="girl-image">
+                            <img src="assets/girl.png" alt="Girl" class="girl-image" loading="eager" decoding="async">
                         </div>
                     </div>
                     <!--
@@ -392,6 +634,10 @@
                 </video>
             </div>
         </div>
+        <script>
+            // Critical FOUC prevention for above-the-fold content
+            document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+        </script>
         <script src="script.js" defer></script>
     </body>
 
